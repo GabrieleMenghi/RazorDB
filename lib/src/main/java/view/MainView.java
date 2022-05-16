@@ -29,5 +29,4 @@ public class MainView extends Application {
         stage.setTitle("RazorDB");
         stage.show();
 	}
-
 }
