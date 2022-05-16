@@ -23,6 +23,16 @@ public class Client {
         this.phone = phone;
     }
 	
+	public Client(final String firstName, final String lastName, final Optional<String> address, 
+			final Optional<String> city, final Optional<String> mail, final Optional<Long> phone) {
+        this.firstName = Objects.requireNonNull(firstName);
+        this.lastName = Objects.requireNonNull(lastName);
+        this.address = address;
+        this.city = city;
+        this.mail = mail;
+        this.phone = phone;
+    }
+	
 	public int getId() {
 		return this.id;
 	}

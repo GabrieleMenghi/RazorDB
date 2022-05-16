@@ -21,13 +21,13 @@ public class AdminController {
 	@FXML
 	Button customers;
 	@FXML
-	TableView clientsTable;
+	TableView<Client> clientsTable;
 	
-	private final ObservableList<Client> data =
-	        FXCollections.observableArrayList(cTable.findAll());
+	/*private final ObservableList<Client> data =
+	        FXCollections.observableArrayList(cTable.findAll());*/
 	
-	@FXML
+	/*@FXML
 	public void viewCustomers() {
 		clientsTable.setItems(data);
-	}
+	}*/
 }
