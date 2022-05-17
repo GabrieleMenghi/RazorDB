@@ -27,15 +27,14 @@ public class TestConnection {
     Client c1 = new Client(1, "Gabriele", "Menghi", Optional.empty(), Optional.of("Rimini"), 
 			Optional.of("gabry.menghi@gmail.com"), Optional.of(n1));
     long n2 = 3928458171L;
-	Client c2 = new Client("Marco", "Verdi", Optional.empty(), Optional.of("Cesena"), 
-			Optional.of("marcoverdi@gmail.com"), Optional.of(n1));
+	Client c2 = new Client(2, "Marco", "Verdi", Optional.empty(), Optional.of("Cesena"), 
+			Optional.of("marcoverdi@gmail.com"), Optional.of(n2));
 	long n3 = 3362558472L;
-	Client c3 = new Client("Giacomo", "Bianchi", Optional.of("Via Arancioni 31"), Optional.of("Bologna"), 
+	Client c3 = new Client(4, "Giacomo", "Bianchi", Optional.of("Via Arancioni 31"), Optional.of("Bologna"), 
 			Optional.of("giacomobianchi@gmail.com"), Optional.of(n3));
 	@Test
 	public void testConnection() {
-		//assertIterableEquals(List.of(c1), cTable.findAll());
-		assertEquals(c3, cTable.find1());
+		assertIterableEquals(List.of(c1, c2, c3), cTable.findAll());
 	}
 	
 	/*@Test
