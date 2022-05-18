@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -64,6 +65,8 @@ public class MainController {
 				scene = new Scene(root);
 				stage.setScene(scene);
 				s2.close();
+				stage.getIcons().add(new Image("images/logoRazor.jpg"));
+				stage.setTitle("Admin");
 				stage.show();
 			} else {
 				adminLabel.setText("Password errata");
@@ -85,6 +88,8 @@ public class MainController {
 				scene = new Scene(root);
 				stage.setScene(scene);
 				s2.close();
+				stage.getIcons().add(new Image("images/logoRazor.jpg"));
+				stage.setTitle("Cliente");
 				stage.show();
 			} else {
 				clientLabel.setText("Il cliente non è presente");

@@ -58,7 +58,9 @@ public class ClientsTable {
             statement.executeUpdate();
             try(ResultSet key = statement.getGeneratedKeys()){
             	if(key.next()) {
-            		return key.getInt(1);
+            		int id = key.getInt(1);
+            		client.setId(id);
+            		return id;
             	} else{
             		return -1;
             	}

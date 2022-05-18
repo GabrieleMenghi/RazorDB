@@ -21,6 +21,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import model.Client;
 
@@ -31,6 +32,10 @@ public class AdminController implements Initializable{
     final static String dbName = "razordb";
     
     final static ConnectionProvider connectionProvider = new ConnectionProvider(username, password, dbName);
+    
+    /* ********** *
+     *   CLIENTI  *
+     * ********** */
     final static ClientsTable cTable = new ClientsTable(connectionProvider.getMySQLConnection());
 	
 	@FXML
@@ -93,9 +98,15 @@ public class AdminController implements Initializable{
 		}
 	}
 	
+	/* *************** *
+     *   APPUNTAMENTI  *
+     * *************** */
+	
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		//CLIENTI
 		viewCustomers();
 		codcliente.setCellValueFactory(new PropertyValueFactory<>("id"));
 		nome.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -104,6 +115,5 @@ public class AdminController implements Initializable{
 		città.setCellValueFactory(new PropertyValueFactory<>("city"));
 		mail.setCellValueFactory(new PropertyValueFactory<>("mail"));
 		telefono.setCellValueFactory(new PropertyValueFactory<>("phone"));
-		
 	}
 }
