@@ -39,6 +39,12 @@ public class MainController {
 	@FXML
 	AnchorPane mainPane;
 	
+	@FXML
+	PasswordField adminPassword;
+	
+	@FXML
+	TextField clientCode;
+	
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
@@ -78,14 +84,16 @@ public class MainController {
 		} else {
 			System.out.println("Please, insert a password");
 		}*/
-		Stage s2 = (Stage) admin.getScene().getWindow();
-		String path = "admin.fxml";
-		root = FXMLLoader.load(getClass().getResource(path));
-		stage = new Stage();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		s2.close();
-		stage.show();
+		if(adminPassword.getText().equals("admin")) {
+			Stage s2 = (Stage) admin.getScene().getWindow();
+			String path = "admin.fxml";
+			root = FXMLLoader.load(getClass().getResource(path));
+			stage = new Stage();
+			scene = new Scene(root);
+			stage.setScene(scene);
+			s2.close();
+			stage.show();
+		}
 		
 	}
 	

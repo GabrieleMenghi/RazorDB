@@ -63,4 +63,21 @@ public class ClientsTable {
             throw new IllegalStateException(e);
         }
     }
+    
+    public boolean isClientPresent(final int id) {
+    	final String query = "SELECT * FROM " + TABLE_NAME
+    							+ " WHERE CodCliente = ?";
+    	try (final PreparedStatement statement = this.connection.prepareStatement(query)) {
+            statement.setInt(1, id);
+            final ResultSet rs = statement.executeQuery();
+            if(rs.isBeforeFirst()) {
+            	return true;            	
+            }
+            return false;
+        } catch (final SQLIntegrityConstraintViolationException e) {
+            return false;
+        } catch (final SQLException e) {
+            return false;
+        }
+    }
 }

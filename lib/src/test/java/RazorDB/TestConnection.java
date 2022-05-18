@@ -42,4 +42,10 @@ public class TestConnection {
 		assertFalse(cTable.save(c2));
 		assertFalse(cTable.save(c3));
 	}*/
+	
+	@Test
+	public void testPresence() {
+		assertTrue(cTable.isClientPresent(1));
+		assertFalse(cTable.isClientPresent(3));
+	}
 }

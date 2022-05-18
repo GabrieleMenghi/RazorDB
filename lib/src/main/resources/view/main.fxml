@@ -2,6 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
@@ -22,6 +24,20 @@
                   <Insets left="150.0" />
                </HBox.margin>
             </Button>
+         </children>
+      </HBox>
+      <HBox layoutX="167.0" layoutY="500.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <PasswordField fx:id="adminPassword" promptText="Admin password">
+               <HBox.margin>
+                  <Insets bottom="40.0" left="110.0" right="40.0" top="40.0" />
+               </HBox.margin>
+            </PasswordField>
+            <TextField fx:id="clientCode" promptText="Codice cliente">
+               <HBox.margin>
+                  <Insets bottom="40.0" left="35.0" right="40.0" top="40.0" />
+               </HBox.margin>
+            </TextField>
          </children>
       </HBox>
    </children>
