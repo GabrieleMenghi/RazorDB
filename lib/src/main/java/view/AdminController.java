@@ -6,6 +6,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import db.ConnectionProvider;
+import db.tables.AppointmentsTable;
+import db.tables.BarbersTable;
 import db.tables.ClientsTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,6 +25,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import model.Appointment;
+import model.Barber;
 import model.Client;
 
 public class AdminController implements Initializable{
@@ -56,9 +60,7 @@ public class AdminController implements Initializable{
 	@FXML
 	TableColumn<Client, String> telefono;
 	
-	private Stage stage;
-	private Scene scene;
-	private Parent root;
+	
 	
 	@FXML
 	public void viewCustomers() {
@@ -72,6 +74,9 @@ public class AdminController implements Initializable{
 
 	@FXML
 	public void createClient() throws IOException {
+		Stage stage;
+		Scene scene;
+		Parent root;
 		root = FXMLLoader.load(getClass().getResource("newClient.fxml"));
 		stage = new Stage();
 		scene = new Scene(root);
@@ -101,8 +106,63 @@ public class AdminController implements Initializable{
 	/* *************** *
      *   APPUNTAMENTI  *
      * *************** */
+final static AppointmentsTable aTable = new AppointmentsTable(connectionProvider.getMySQLConnection());
+	
+	@FXML
+	TableView<Appointment> appointmentsTable;
+	
+	@FXML
+	TableColumn<Appointment, String> c_a_date;
+	@FXML
+	TableColumn<Appointment, String> c_a_time;
+	@FXML
+	TableColumn<Appointment, String> c_a_bookingclient;
 	
 	
+	
+	@FXML
+	public void viewAppointments() {
+		final ObservableList<Appointment> data =
+		        FXCollections.observableArrayList();
+		aTable.findAll().forEach(a -> {
+			data.add(a);
+		});
+		System.out.println(data); //DEBUG
+		appointmentsTable.setItems(data);
+	}
+	
+	/* ********** *
+     *  BARBIERI  *
+     * ********** */
+    final static BarbersTable bTable = new BarbersTable(connectionProvider.getMySQLConnection());
+	
+	@FXML
+	TableView<Barber> barbersTable;
+	
+	@FXML
+	TableColumn<Barber, String> c_b_id;
+	@FXML
+	TableColumn<Barber, String> c_b_firstname;
+	@FXML
+	TableColumn<Barber, String> c_b_lastname;
+	@FXML
+	TableColumn<Barber, String> c_b_cf;
+	@FXML
+	TableColumn<Barber, String> c_b_birthdate;
+	@FXML
+	TableColumn<Barber, String> c_b_type;
+	@FXML
+	TableColumn<Barber, String> c_b_piva;
+	
+	@FXML
+	public void viewBarbers() {
+		final ObservableList<Barber> data =
+		        FXCollections.observableArrayList();
+		bTable.findAll().forEach(b -> {
+			data.add(b);
+		});
+		barbersTable.setItems(data);
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -115,5 +175,21 @@ public class AdminController implements Initializable{
 		città.setCellValueFactory(new PropertyValueFactory<>("city"));
 		mail.setCellValueFactory(new PropertyValueFactory<>("mail"));
 		telefono.setCellValueFactory(new PropertyValueFactory<>("phone"));
+		
+		//BARBIERI
+		viewBarbers();
+		c_b_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+		c_b_firstname.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+		c_b_lastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+		c_b_cf.setCellValueFactory(new PropertyValueFactory<>("cf"));
+		c_b_birthdate.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
+		c_b_type.setCellValueFactory(new PropertyValueFactory<>("type"));
+		c_b_piva.setCellValueFactory(new PropertyValueFactory<>("piva"));
+		
+		//APPUNTAMENTI
+		viewAppointments();
+		c_a_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+		c_a_time.setCellValueFactory(new PropertyValueFactory<>("time"));
+		c_a_bookingclient.setCellValueFactory(new PropertyValueFactory<>("idBookingClient"));
 	}
 }

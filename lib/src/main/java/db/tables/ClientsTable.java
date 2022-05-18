@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-
 import model.Client;
-import utils.Utils;
 
 public class ClientsTable {
 	

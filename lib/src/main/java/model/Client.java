@@ -14,7 +14,7 @@ public class Client {
 	
 	public Client(final int id, final String firstName, final String lastName, final Optional<String> address, 
 			final Optional<String> city, final Optional<String> mail, final Optional<Long> phone) {
-        this.id = id;
+        this.id = Objects.requireNonNull(id);
         this.firstName = Objects.requireNonNull(firstName);
         this.lastName = Objects.requireNonNull(lastName);
         this.address = address;

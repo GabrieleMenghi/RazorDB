@@ -75,10 +75,35 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: black;">
                <children>
-                  <TableView layoutX="294.0" layoutY="141.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+                  <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="657.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <VBox prefHeight="600.0" prefWidth="174.0" style="-fx-background-color: #5f5f5f;" />
+                     </children>
+                  </AnchorPane>
+                  <TableView fx:id="appointmentsTable" layoutX="301.0" layoutY="25.0" prefHeight="550.0" prefWidth="372.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="301.0" AnchorPane.rightAnchor="127.0" AnchorPane.topAnchor="25.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="DATA" />
-                      <TableColumn prefWidth="75.0" text="ORA" />
+                      <TableColumn fx:id="c_a_date" prefWidth="113.0" text="DATA" />
+                      <TableColumn fx:id="c_a_time" prefWidth="105.0" text="ORA" />
+                        <TableColumn fx:id="c_a_bookingclient" prefWidth="155.0" text="CLIENTE PRENOTANTE" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab closable="false" text="BARBIERI">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: black;">
+               <children>
+                  <TableView fx:id="barbersTable" layoutX="289.0" layoutY="126.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="35.0">
+                    <columns>
+                      <TableColumn fx:id="c_b_id" prefWidth="75.0" text="CODICE" />
+                      <TableColumn fx:id="c_b_firstname" prefWidth="92.0" text="NOME" />
+                        <TableColumn fx:id="c_b_lastname" prefWidth="77.0" text="COGNOME" />
+                        <TableColumn fx:id="c_b_cf" prefWidth="138.0" text="CF" />
+                        <TableColumn fx:id="c_b_birthdate" minWidth="0.0" prefWidth="134.0" text="DATA DI NASCITA" />
+                        <TableColumn fx:id="c_b_type" prefWidth="51.0" text="TIPO" />
+                        <TableColumn fx:id="c_b_piva" prefWidth="182.0" text="PARTITA IVA" />
                     </columns>
                   </TableView>
                </children>

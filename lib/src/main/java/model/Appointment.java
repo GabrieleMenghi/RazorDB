@@ -1,7 +1,8 @@
 package model;
 
+import java.sql.Date;
 import java.sql.Time;
-import java.util.Date;
+import java.util.Objects;
 import java.util.Optional;
 
 public class Appointment {
@@ -17,12 +18,12 @@ public class Appointment {
 	public Appointment(int idPerformingBarber, Date date, Time time, int idBookingClient,
 			Optional<Integer> idPerformingClient, int idBookingBarber, Optional<Integer> receiptNumber,
 			Optional<Date> receiptDate) {
-		this.idPerformingBarber = idPerformingBarber;
-		this.date = date;
-		this.time = time;
-		this.idBookingClient = idBookingClient;
+		this.idPerformingBarber = Objects.requireNonNull(idPerformingBarber);
+		this.date = Objects.requireNonNull(date);
+		this.time = Objects.requireNonNull(time);
+		this.idBookingClient = Objects.requireNonNull(idBookingClient);
 		this.idPerformingClient = idPerformingClient;
-		this.idBookingBarber = idBookingBarber;
+		this.idBookingBarber = Objects.requireNonNull(idBookingBarber);
 		this.receiptNumber = receiptNumber;
 		this.receiptDate = receiptDate;
 	}

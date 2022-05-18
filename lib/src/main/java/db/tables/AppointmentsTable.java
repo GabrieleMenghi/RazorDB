@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import model.Appointment;
-import utils.Utils;
 
 public class AppointmentsTable {
 	public static final String TABLE_NAME = "appuntamenti";
@@ -23,17 +22,24 @@ public class AppointmentsTable {
     public List<Appointment> findAll() {
     	final List<Appointment> appointments = new ArrayList<>();
     	try(final Statement statement = this.connection.createStatement()){
-    		final ResultSet rs = statement.executeQuery("SELECT * FROM " + TABLE_NAME);
+    		final ResultSet rs = statement.executeQuery("SELECT * FROM " + TABLE_NAME
+    													+ " a, barbieri b, clienti c, scontrini s"
+    													+ " WHERE a.BarbiereEffettuante = b.CodBarbiere"
+    													+ " AND a.BarbierePrenotante = b.CodBarbiere"
+    			/*TO FIX*/								+ " AND a.ClientePrenotante = c.CodCliente"
+    													+ " AND a.ClienteEffettuante = c.CodCliente"
+    													+ " AND a.NumScontrino = s.NumScontrino"
+    													+ " AND a.DataScontrino = s.Data");    
     		
     		while(rs.next()) {
 				 appointments.add(new Appointment(rs.getInt(1), 
-						 							Utils.sqlDateToDate(rs.getDate(2)), 
+						 							rs.getDate(2), 
 						 							rs.getTime(3), 
 						 							rs.getInt(4), 
 						 							Optional.of(rs.getInt(5)), 
 						 							rs.getInt(6), 
 						 							Optional.of(rs.getInt(7)), 
-						 							Optional.of(Utils.sqlDateToDate(rs.getDate(8)))));
+						 							Optional.of(rs.getDate(8))));
 			}
     	} catch (final SQLException e) {
     		throw new IllegalStateException();
