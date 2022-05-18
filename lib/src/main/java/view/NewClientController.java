@@ -46,12 +46,22 @@ public class NewClientController {
 			error.setText("Compila i campi obbligatori");
 		} else {
 			Stage s2 = (Stage) save.getScene().getWindow();
-			Client c = new Client(ffirstname.getText(), 
-									flastname.getText(), 
-									Optional.ofNullable(faddress.getText()), 
-									Optional.ofNullable(fcity.getText()), 
-									Optional.ofNullable(fmail.getText()), 
-									Optional.ofNullable(Long.decode(fphone.getText())));
+			Client c;
+			if(fphone.getText().isEmpty()) {
+				c = new Client(ffirstname.getText(), 
+						flastname.getText(), 
+						getOptional(faddress.getText()), 
+						getOptional(fcity.getText()), 
+						getOptional(fmail.getText()), 
+						Optional.of(0L));
+			} else {
+				c = new Client(ffirstname.getText(), 
+										flastname.getText(), 
+										getOptional(faddress.getText()), 
+										getOptional(fcity.getText()), 
+										getOptional(fmail.getText()), 
+										Optional.of(Long.decode(fphone.getText())));
+			}
 			cTable.save(c);
 			s2.close();
 		}
@@ -61,5 +71,12 @@ public class NewClientController {
 	public void closeStage() {
 		Stage s2 = (Stage) close.getScene().getWindow();
 		s2.close();
+	}
+	
+	private Optional<String> getOptional(String text){
+		if(text.equals("")) {
+			return Optional.empty();
+		}
+		return Optional.of(text);
 	}
 }

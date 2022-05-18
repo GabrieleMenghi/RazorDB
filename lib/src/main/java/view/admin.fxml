@@ -42,6 +42,16 @@
                                     </Label>
                                  </children>
                               </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="TRASH" onMouseClicked="#deleteClient" size="40" />
+                                    <Label onMouseClicked="#deleteClient" text="Rimuovi cliente" textFill="WHITE">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
                      </children>

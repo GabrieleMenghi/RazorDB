@@ -45,16 +45,36 @@ public class ClientsTable {
     	}
     }
     
-    public boolean save(final Client client) {
+    public int save(final Client client) {
         final String query = "INSERT INTO " + TABLE_NAME + "(Nome, Cognome, Via, Città, Mail, NumTelefono) "
         		+ "VALUES (?,?,?,?,?,?)";
-        try (final PreparedStatement statement = this.connection.prepareStatement(query)) {
+        try (final PreparedStatement statement = this.connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, client.getFirstName());
             statement.setString(2, client.getLastName());
             statement.setString(3, client.getAddress());
             statement.setString(4, client.getCity());
             statement.setString(5, client.getMail());
             statement.setLong(6, client.getPhone());
+            statement.executeUpdate();
+            try(ResultSet key = statement.getGeneratedKeys()){
+            	if(key.next()) {
+            		return key.getInt(1);
+            	} else{
+            		return -1;
+            	}
+            }            
+        } catch (final SQLIntegrityConstraintViolationException e) {
+            return -2;
+        } catch (final SQLException e) {
+            throw new IllegalStateException();
+        }
+    }
+    
+    public boolean delete(int id) {
+        final String query = "DELETE FROM " + TABLE_NAME + 
+        		" WHERE CodCliente = ?";
+        try (final PreparedStatement statement = this.connection.prepareStatement(query)) {
+            statement.setInt(1, id);
             statement.executeUpdate();
             return true;
         } catch (final SQLIntegrityConstraintViolationException e) {

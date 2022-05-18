@@ -2,6 +2,7 @@ package view;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import db.ConnectionProvider;
@@ -13,7 +14,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -68,6 +72,25 @@ public class AdminController implements Initializable{
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
+	}
+	
+	@FXML
+	public void deleteClient() {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		int id = clientsTable.getSelectionModel().getSelectedItem().getId();
+		alert.setTitle("Conferma");
+		String s = "Sei sicuro di voler eliminare l'utente " + id + "?";
+		alert.setContentText(s);
+		 
+		Optional<ButtonType> result = alert.showAndWait();
+		 
+		if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
+			clientsTable.getItems().remove(clientsTable.getSelectionModel().getSelectedIndex());
+			
+			cTable.delete(id);
+		} else if ((result.isPresent()) && (result.get() == ButtonType.CANCEL)) {
+			alert.close();
+		}
 	}
 	
 	

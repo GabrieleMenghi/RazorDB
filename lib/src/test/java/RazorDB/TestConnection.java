@@ -4,6 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,6 +33,8 @@ public class TestConnection {
 	long n3 = 3362558472L;
 	Client c3 = new Client(4, "Giacomo", "Bianchi", Optional.of("Via Arancioni 31"), Optional.of("Bologna"), 
 			Optional.of("giacomobianchi@gmail.com"), Optional.of(n3));
+	/*Client c4 = new Client("Raffele", "Marroni", Optional.of("Via"), Optional.of("Citta"), 
+			Optional.of("Mail2"), Optional.of(null));*/
 	@Test
 	public void testConnection() {
 		assertIterableEquals(List.of(c1, c2, c3), cTable.findAll());
@@ -43,9 +46,16 @@ public class TestConnection {
 		assertFalse(cTable.save(c3));
 	}*/
 	
-	@Test
+	/*@Test
 	public void testPresence() {
 		assertTrue(cTable.isClientPresent(1));
 		assertFalse(cTable.isClientPresent(3));
-	}
+	}*/
+	
+	/*@Test
+	public void testNoPhone() {
+		int id = cTable.save(c4);
+		System.out.println(id);
+		//cTable.delete(22);
+	}*/
 }
