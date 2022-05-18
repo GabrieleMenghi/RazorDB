@@ -45,6 +45,10 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:$jUnitVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jUnitVersion")
     implementation("mysql:mysql-connector-java:8.0.29")
+   	// https://mvnrepository.com/artifact/de.jensd/fontawesomefx
+	implementation("de.jensd:fontawesomefx:8.2")
+
+    
 }
 
 tasks.withType<JavaCompile> {

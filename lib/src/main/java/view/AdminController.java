@@ -1,5 +1,6 @@
 package view;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -8,11 +9,15 @@ import db.tables.ClientsTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import model.Client;
 
 public class AdminController implements Initializable{
@@ -24,8 +29,6 @@ public class AdminController implements Initializable{
     final static ConnectionProvider connectionProvider = new ConnectionProvider(username, password, dbName);
     final static ClientsTable cTable = new ClientsTable(connectionProvider.getMySQLConnection());
 	
-	@FXML
-	Button customers;
 	@FXML
 	TableView<Client> clientsTable;
 	
@@ -44,6 +47,10 @@ public class AdminController implements Initializable{
 	@FXML
 	TableColumn<Client, String> telefono;
 	
+	private Stage stage;
+	private Scene scene;
+	private Parent root;
+	
 	@FXML
 	public void viewCustomers() {
 		final ObservableList<Client> data =
@@ -52,11 +59,21 @@ public class AdminController implements Initializable{
 			data.add(c);
 		});
 		clientsTable.setItems(data);
-		System.out.println(data);
 	}
 
+	@FXML
+	public void createClient() throws IOException {
+		root = FXMLLoader.load(getClass().getResource("newClient.fxml"));
+		stage = new Stage();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		viewCustomers();
 		codcliente.setCellValueFactory(new PropertyValueFactory<>("id"));
 		nome.setCellValueFactory(new PropertyValueFactory<>("firstName"));
 		cognome.setCellValueFactory(new PropertyValueFactory<>("lastName"));

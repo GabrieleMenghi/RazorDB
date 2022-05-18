@@ -1,0 +1,6 @@
+.text {
+	-fx-background-color: transparent;
+	-fx-font-size: 17;
+	-fx-border-width: 0px 0px 2px 0px;
+	-fx-border-color: black;
+}
