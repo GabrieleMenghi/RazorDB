@@ -45,60 +45,39 @@ public class MainController {
 	@FXML
 	TextField clientCode;
 	
+	@FXML
+	Label adminLabel;
+	
+	@FXML
+	Label clientLabel;
+	
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
 	
 	@FXML
-	public void adminDialog(ActionEvent event) throws IOException {
-		/*Dialog<String> dialog = new Dialog<>();
-		dialog.setTitle("Login");
-		dialog.setHeaderText("Admin login");
-
-		// Set the button types.
-		ButtonType loginButtonType = new ButtonType("Login", ButtonData.OK_DONE);
-		dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
-
-		// Create the password labels and fields.
-		GridPane grid = new GridPane();
-		grid.setHgap(10);
-		grid.setVgap(10);
-		grid.setPadding(new Insets(20, 150, 10, 10));
-
-		PasswordField password = new PasswordField();
-		password.setPromptText("Password");
-		
-		grid.add(new Label("Password:"), 0, 1);
-		grid.add(password, 1, 1);
-		
-		dialog.getDialogPane().setContent(grid);
-
-		Optional<String> result = dialog.showAndWait();
-
-		if(result.isPresent()) {
-			if(result.get().equals("admin")) {
-				System.out.println("OK");
-			} else {
-				System.out.println("Wrong password");
-			}
+	public void adminAccess(ActionEvent event) throws IOException {
+		if(adminPassword.getText().equals("")) {
+			adminLabel.setText("Please, insert the password");
 		} else {
-			System.out.println("Please, insert a password");
-		}*/
-		if(adminPassword.getText().equals("admin")) {
-			Stage s2 = (Stage) admin.getScene().getWindow();
-			String path = "admin.fxml";
-			root = FXMLLoader.load(getClass().getResource(path));
-			stage = new Stage();
-			scene = new Scene(root);
-			stage.setScene(scene);
-			s2.close();
-			stage.show();
+			if(adminPassword.getText().equals("admin")) {
+				Stage s2 = (Stage) admin.getScene().getWindow();
+				String path = "admin.fxml";
+				root = FXMLLoader.load(getClass().getResource(path));
+				stage = new Stage();
+				scene = new Scene(root);
+				stage.setScene(scene);
+				s2.close();
+				stage.show();
+			} else {
+				adminLabel.setText("Wrong password");
+			}
 		}
 		
 	}
 	
 	@FXML
-	public void clientDialog(ActionEvent event) throws IOException {
+	public void clientAccess(ActionEvent event) throws IOException {
 		Stage s2 = (Stage) cliente.getScene().getWindow();
 		String path = "cliente.fxml";
 		root = FXMLLoader.load(getClass().getResource(path));
