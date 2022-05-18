@@ -1,31 +1,19 @@
 package view;
 
 import java.io.IOException;
-import java.util.Optional;
-
-import org.junit.platform.engine.support.hierarchical.Node;
-
 import db.ConnectionProvider;
 import db.tables.ClientsTable;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar.ButtonData;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.util.Pair;
 
 public class MainController {
 	
@@ -63,10 +51,12 @@ public class MainController {
 	
 	@FXML
 	public void adminAccess(ActionEvent event) throws IOException {
+		clientLabel.setText("");
 		if(adminPassword.getText().isEmpty()) {
 			adminLabel.setText("Inserisci una password");
 		} else {
 			if(adminPassword.getText().equals("admin")) {
+				adminLabel.setText("");
 				Stage s2 = (Stage) admin.getScene().getWindow();
 				String path = "admin.fxml";
 				root = FXMLLoader.load(getClass().getResource(path));
@@ -84,8 +74,10 @@ public class MainController {
 	
 	@FXML
 	public void clientAccess(ActionEvent event) throws IOException {
+		adminLabel.setText("");
 		try {
 			if(cTable.isClientPresent(Integer.parseInt(clientCode.getText()))) {
+				clientLabel.setText("");
 				Stage s2 = (Stage) cliente.getScene().getWindow();
 				String path = "cliente.fxml";
 				root = FXMLLoader.load(getClass().getResource(path));

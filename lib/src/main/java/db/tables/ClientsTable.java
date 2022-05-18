@@ -51,10 +51,10 @@ public class ClientsTable {
         try (final PreparedStatement statement = this.connection.prepareStatement(query)) {
             statement.setString(1, client.getFirstName());
             statement.setString(2, client.getLastName());
-            statement.setString(3, client.getAddress().orElse(null));
-            statement.setString(4, client.getCity().orElse(null));
-            statement.setString(5, client.getMail().orElse(null));
-            statement.setLong(6, client.getPhone().orElse(null));
+            statement.setString(3, client.getAddress());
+            statement.setString(4, client.getCity());
+            statement.setString(5, client.getMail());
+            statement.setLong(6, client.getPhone());
             statement.executeUpdate();
             return true;
         } catch (final SQLIntegrityConstraintViolationException e) {

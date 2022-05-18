@@ -45,20 +45,20 @@ public class Client {
 		return lastName;
 	}
 
-	public Optional<String> getAddress() {
-		return address;
+	public String getAddress() {
+		return address.orElse(null);
 	}
 
-	public Optional<String> getCity() {
-		return city;
+	public String getCity() {
+		return city.orElse(null);
 	}
 
-	public Optional<String> getMail() {
-		return mail;
+	public String getMail() {
+		return mail.orElse(null);
 	}
 
-	public Optional<Long> getPhone() {
-		return phone;
+	public Long getPhone() {
+		return phone.orElse(null);
 	}
 
 	@Override
