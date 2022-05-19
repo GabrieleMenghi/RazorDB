@@ -2,6 +2,8 @@ package view;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -21,6 +23,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -30,6 +33,7 @@ import model.Appointment;
 import model.Barber;
 import model.Client;
 import model.Receipt;
+import utils.Utils;
 
 public class AdminController implements Initializable{
 	
@@ -83,6 +87,7 @@ public class AdminController implements Initializable{
 		stage = new Stage();
 		stage.getIcons().add(new Image("images/logoRazor.jpg"));
 		stage.setTitle("Nuovo cliente");
+		stage.setResizable(false);
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
@@ -121,8 +126,8 @@ final static AppointmentsTable aTable = new AppointmentsTable(connectionProvider
 	TableColumn<Appointment, String> c_a_time;
 	@FXML
 	TableColumn<Appointment, String> c_a_bookingclient;
-	
-	
+	@FXML
+	DatePicker date;
 	
 	@FXML
 	public void viewAppointments() {
@@ -132,6 +137,39 @@ final static AppointmentsTable aTable = new AppointmentsTable(connectionProvider
 			data.add(a);
 		});
 		appointmentsTable.setItems(data);
+	}
+	
+	@FXML
+	public void viewAppByDate() {
+		Date d = Utils.buildDate(date.getValue().getDayOfMonth(), date.getValue().getMonthValue(), date.getValue().getYear()).get();
+		final ObservableList<Appointment> data =
+		        FXCollections.observableArrayList();
+		aTable.findAppointmentsByDate(Utils.dateToSqlDate(d)).forEach(a -> {
+			data.add(a);
+		});
+		appointmentsTable.setItems(data);
+	}
+	
+	@FXML
+	public void undo() {
+		date.setValue(LocalDate.now());
+		date.getEditor().clear();
+		viewAppointments();
+	}
+	
+	@FXML
+	public void createAppointment() throws IOException {
+		Stage stage;
+		Scene scene;
+		Parent root;
+		root = FXMLLoader.load(getClass().getResource("newAppointment.fxml"));
+		stage = new Stage();
+		stage.getIcons().add(new Image("images/logoRazor.jpg"));
+		stage.setTitle("Nuovo appuntamento");
+		stage.setResizable(false);
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
 	}
 	
 	/* ********** *

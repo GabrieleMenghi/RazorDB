@@ -1,8 +1,6 @@
 package view;
 
-import java.sql.SQLException;
 import java.util.Optional;
-
 import db.ConnectionProvider;
 import db.tables.ClientsTable;
 import javafx.fxml.FXML;
@@ -54,6 +52,7 @@ public class NewClientController {
 						getOptional(fcity.getText()), 
 						getOptional(fmail.getText()), 
 						Optional.of(0L));
+						cTable.save(c);
 			} else {
 				c = new Client(ffirstname.getText(), 
 										flastname.getText(), 
@@ -61,8 +60,8 @@ public class NewClientController {
 										getOptional(fcity.getText()), 
 										getOptional(fmail.getText()), 
 										Optional.of(Long.decode(fphone.getText())));
+										cTable.save(c);
 			}
-			cTable.save(c);
 			s2.close();
 		}
 	}

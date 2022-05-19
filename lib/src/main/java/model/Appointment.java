@@ -11,59 +11,45 @@ public class Appointment {
 	private Date date;
 	private Time time;
 	private int idBookingClient;
-	private Optional<Integer> idPerformingClient;
+	private Integer idPerformingClient;
 	private int idBookingBarber;
-	private Optional<Integer> receiptNumber;
-	private Optional<Date> receiptDate;
+	private Integer receiptNumber;
+	private Date receiptDate;
 	
-	public Appointment(int idPerformingBarber, Date date, Time time, int idBookingClient,
-			Optional<Integer> idPerformingClient, int idBookingBarber, Optional<Integer> receiptNumber,
-			Optional<Date> receiptDate) {
-		this.idPerformingBarber = Objects.requireNonNull(idPerformingBarber);
-		this.date = Objects.requireNonNull(date);
-		this.time = Objects.requireNonNull(time);
-		this.idBookingClient = Objects.requireNonNull(idBookingClient);
+	public Appointment(int idPerformingBarber, Date date, Time time, int idBookingClient, Integer idPerformingClient,
+			int idBookingBarber, Integer receiptNumber, Date receiptDate) {
+		this.idPerformingBarber = idPerformingBarber;
+		this.date = date;
+		this.time = time;
+		this.idBookingClient = idBookingClient;
 		this.idPerformingClient = idPerformingClient;
-		this.idBookingBarber = Objects.requireNonNull(idBookingBarber);
+		this.idBookingBarber = idBookingBarber;
 		this.receiptNumber = receiptNumber;
 		this.receiptDate = receiptDate;
 	}
-
+	
 	public int getIdPerformingBarber() {
 		return idPerformingBarber;
 	}
-
 	public Date getDate() {
 		return date;
 	}
-
 	public Time getTime() {
 		return time;
 	}
-
 	public int getIdBookingClient() {
 		return idBookingClient;
 	}
-
-	public int getIdPerformingClient() {
-		return idPerformingClient.orElse(null);
+	public Integer getIdPerformingClient() {
+		return idPerformingClient;
 	}
-
 	public int getIdBookingBarber() {
 		return idBookingBarber;
 	}
-
-	public int getReceiptNumber() {
-		return receiptNumber.orElse(null);
+	public Integer getReceiptNumber() {
+		return receiptNumber;
 	}
-
 	public Date getReceiptDate() {
-		return receiptDate.orElse(null);
-	}
-	
-	
-	
-	
-	
-	
+		return receiptDate;
+	}	
 }

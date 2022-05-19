@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -15,7 +16,7 @@
    <tabs>
       <Tab closable="false" text="CLIENTI">
          <content>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: black;">
+            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: black;">
                <children>
                   <AnchorPane prefHeight="600.0" prefWidth="174.0" style="-fx-background-color: #5f5f5f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -56,7 +57,7 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <TableView fx:id="clientsTable" layoutX="195.0" layoutY="45.0" prefHeight="421.0" prefWidth="580.0" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+                  <TableView fx:id="clientsTable" layoutX="195.0" layoutY="45.0" prefHeight="421.0" prefWidth="580.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
                     <columns>
                       <TableColumn fx:id="codcliente" prefWidth="54.0" text="CODICE" />
                       <TableColumn fx:id="nome" prefWidth="83.0" text="NOME" />
@@ -73,11 +74,67 @@
       </Tab>
       <Tab closable="false" text="APPUNTAMENTI">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: black;">
+          <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: black;">
                <children>
                   <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="657.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <VBox prefHeight="600.0" prefWidth="174.0" style="-fx-background-color: #5f5f5f;" />
+                        <VBox prefHeight="600.0" prefWidth="174.0" style="-fx-background-color: #5f5f5f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="PLUS" onMouseClicked="#createAppointment" size="40" />
+                                    <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="146.0">
+                                       <children>
+                                          <Label prefWidth="118.0" text="Nuovo" textFill="WHITE">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <Label onMouseClicked="#createAppointment" text="appuntamento" textFill="WHITE">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="CALENDAR" size="40" />
+                                    <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="138.0">
+                                       <children>
+                                          <Label text="Scegli data" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <DatePicker fx:id="date" onAction="#viewAppByDate" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="UNDO" onMouseClicked="#undo" size="40" />
+                                    <Label onMouseClicked="#undo" text="Ripristina" textFill="WHITE">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="REFRESH" onMouseClicked="#viewAppointments" size="40" />
+                                    <Label onMouseClicked="#viewAppointments" text="Aggiorna" textFill="WHITE">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children></VBox>
                      </children>
                   </AnchorPane>
                   <TableView fx:id="appointmentsTable" layoutX="301.0" layoutY="25.0" prefHeight="550.0" prefWidth="372.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="301.0" AnchorPane.rightAnchor="127.0" AnchorPane.topAnchor="25.0">
@@ -93,7 +150,7 @@
       </Tab>
       <Tab closable="false" text="BARBIERI">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: black;">
+          <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: black;">
                <children>
                   <TableView fx:id="barbersTable" layoutX="289.0" layoutY="126.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="35.0">
                     <columns>
@@ -112,7 +169,7 @@
       </Tab>
       <Tab closable="false" text="SCONTRINI">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: black;">
+          <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: black;">
                <children>
                   <TableView fx:id="receiptsTable" layoutX="238.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
                     <columns>

@@ -14,7 +14,7 @@
          <children>
             <Label text="* = campo obbligatorio" textFill="WHITE">
                <font>
-                  <Font size="15.0" />
+                  <Font name="Times New Roman" size="16.0" />
                </font>
             </Label>
          </children>
@@ -35,7 +35,7 @@
                   <Font name="Times New Roman" size="25.0" />
                </font>
             </Label>
-            <TextField fx:id="ffirstname" prefHeight="40.0" prefWidth="441.0" styleClass="text" stylesheets="@style2.css">
+            <TextField fx:id="ffirstname" prefHeight="40.0" prefWidth="380.0" styleClass="text" stylesheets="@style2.css">
                <font>
                   <Font size="25.0" />
                </font>
@@ -44,12 +44,12 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="200.0">
          <children>
-            <Label prefHeight="29.0" prefWidth="202.0" text="*Cognome" textFill="WHITE">
+            <Label prefHeight="30.0" prefWidth="118.0" text="*Cognome" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="25.0" />
                </font>
             </Label>
-            <TextField fx:id="flastname" prefHeight="40.0" prefWidth="441.0" styleClass="text" stylesheets="@style2.css">
+            <TextField fx:id="flastname" prefHeight="40.0" prefWidth="380.0" styleClass="text" stylesheets="@style2.css">
                <font>
                   <Font size="25.0" />
                </font>
@@ -63,7 +63,7 @@
                   <Font name="Times New Roman" size="25.0" />
                </font>
             </Label>
-            <TextField fx:id="faddress" prefHeight="40.0" prefWidth="441.0" styleClass="text" stylesheets="@style2.css">
+            <TextField fx:id="faddress" prefHeight="40.0" prefWidth="380.0" styleClass="text" stylesheets="@style2.css">
                <font>
                   <Font size="25.0" />
                </font>

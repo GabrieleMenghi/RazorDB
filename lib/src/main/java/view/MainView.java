@@ -25,6 +25,7 @@ public class MainView extends Application {
 			scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 			stage.setScene(scene);
 			stage.getIcons().add(new Image("images/logoRazor.jpg"));
+			stage.setResizable(false);
 		} catch (Exception e) {}
         stage.setTitle("RazorDB");
         stage.show();

@@ -5,13 +5,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 
 import db.ConnectionProvider;
+import db.tables.AppointmentsTable;
 import db.tables.ClientsTable;
+import model.Appointment;
 import model.Client;
 
 public class TestConnection {
@@ -34,10 +38,10 @@ public class TestConnection {
 			Optional.of("giacomobianchi@gmail.com"), Optional.of(n3));
 	/*Client c4 = new Client("Raffele", "Marroni", Optional.of("Via"), Optional.of("Citta"), 
 			Optional.of("Mail2"), Optional.of(null));*/
-	@Test
+	/*@Test
 	public void testConnection() {
 		assertIterableEquals(List.of(c1, c2, c3), cTable.findAll());
-	}
+	}*/
 	
 	/*@Test
 	public void testSave() {
@@ -56,5 +60,14 @@ public class TestConnection {
 		int id = cTable.save(c4);
 		System.out.println(id);
 		//cTable.delete(22);
+	}*/
+	
+	final static AppointmentsTable aTable = new AppointmentsTable(connectionProvider.getMySQLConnection());
+	
+	Appointment a1 = new Appointment(1, Date.valueOf("2022-05-27"), Time.valueOf("17:45:00"), 1, null, 1, null, null);
+	
+	/*@Test
+	public void testNewAppointment() {
+		assertTrue(aTable.save(a1));
 	}*/
 }
