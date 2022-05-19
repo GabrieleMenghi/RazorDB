@@ -30,7 +30,7 @@ public class BarbersTable {
 						 				rs.getString(4), 
 						 				rs.getDate(5),
 						 				rs.getString(6), 
-						 				Optional.of(rs.getLong(7))));
+						 				Optional.ofNullable(rs.getLong(7))));
 			}
     	} catch (final SQLException e) {
     		throw new IllegalStateException();

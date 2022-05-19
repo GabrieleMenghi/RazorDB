@@ -58,7 +58,7 @@ public class Appointment {
 	}
 
 	public Date getReceiptDate() {
-		return receiptDate.orElse(date2);
+		return receiptDate.orElse(null);
 	}
 	
 	
