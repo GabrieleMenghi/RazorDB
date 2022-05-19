@@ -9,6 +9,7 @@ import db.ConnectionProvider;
 import db.tables.AppointmentsTable;
 import db.tables.BarbersTable;
 import db.tables.ClientsTable;
+import db.tables.ReceiptsTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -28,6 +29,7 @@ import javafx.stage.Stage;
 import model.Appointment;
 import model.Barber;
 import model.Client;
+import model.Receipt;
 
 public class AdminController implements Initializable{
 	
@@ -79,6 +81,8 @@ public class AdminController implements Initializable{
 		Parent root;
 		root = FXMLLoader.load(getClass().getResource("newClient.fxml"));
 		stage = new Stage();
+		stage.getIcons().add(new Image("images/logoRazor.jpg"));
+		stage.setTitle("Nuovo cliente");
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
@@ -127,7 +131,6 @@ final static AppointmentsTable aTable = new AppointmentsTable(connectionProvider
 		aTable.findAll().forEach(a -> {
 			data.add(a);
 		});
-		System.out.println(data); //DEBUG
 		appointmentsTable.setItems(data);
 	}
 	
@@ -164,6 +167,39 @@ final static AppointmentsTable aTable = new AppointmentsTable(connectionProvider
 		barbersTable.setItems(data);
 	}
 	
+	/* *************** *
+     *    SCONTRINI    *
+     * *************** */
+final static ReceiptsTable rTable = new ReceiptsTable(connectionProvider.getMySQLConnection());
+	
+	@FXML
+	TableView<Receipt> receiptsTable;
+	
+	@FXML
+	TableColumn<Receipt, String> c_r_id;
+	@FXML
+	TableColumn<Receipt, String> c_r_date;
+	@FXML
+	TableColumn<Receipt, String> c_r_time;
+	@FXML
+	TableColumn<Receipt, String> c_r_total;
+	@FXML
+	TableColumn<Receipt, String> c_r_barber;
+	@FXML
+	TableColumn<Receipt, String> c_r_client;
+	
+	
+	
+	@FXML
+	public void viewReceipts() {
+		final ObservableList<Receipt> data =
+		        FXCollections.observableArrayList();
+		rTable.findAll().forEach(r -> {
+			data.add(r);
+		});
+		receiptsTable.setItems(data);
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		//CLIENTI
@@ -191,5 +227,14 @@ final static AppointmentsTable aTable = new AppointmentsTable(connectionProvider
 		c_a_date.setCellValueFactory(new PropertyValueFactory<>("date"));
 		c_a_time.setCellValueFactory(new PropertyValueFactory<>("time"));
 		c_a_bookingclient.setCellValueFactory(new PropertyValueFactory<>("idBookingClient"));
+		
+		//SCONTRINI
+		viewReceipts();
+		c_r_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+		c_r_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+		c_r_time.setCellValueFactory(new PropertyValueFactory<>("time"));
+		c_r_total.setCellValueFactory(new PropertyValueFactory<>("total"));
+		c_r_barber.setCellValueFactory(new PropertyValueFactory<>("idBarber"));
+		c_r_client.setCellValueFactory(new PropertyValueFactory<>("idClient"));
 	}
 }

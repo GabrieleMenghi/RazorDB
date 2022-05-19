@@ -110,5 +110,23 @@
             </AnchorPane>
         </content>
       </Tab>
+      <Tab closable="false" text="SCONTRINI">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: black;">
+               <children>
+                  <TableView fx:id="receiptsTable" layoutX="238.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+                    <columns>
+                      <TableColumn fx:id="c_r_id" prefWidth="75.0" text="NUMERO" />
+                      <TableColumn fx:id="c_r_date" prefWidth="131.0" text="DATA" />
+                        <TableColumn fx:id="c_r_time" prefWidth="128.0" text="ORA" />
+                        <TableColumn fx:id="c_r_total" prefWidth="133.0" text="TOTALE" />
+                        <TableColumn fx:id="c_r_barber" prefWidth="138.0" text="BARBIERE" />
+                        <TableColumn fx:id="c_r_client" prefWidth="144.0" text="CLIENTE" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
    </tabs>
 </TabPane>

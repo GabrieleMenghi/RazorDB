@@ -2,5 +2,20 @@
 	-fx-background-color: transparent;
 	-fx-font-size: 17;
 	-fx-border-width: 0px 0px 2px 0px;
-	-fx-border-color: black;
+	-fx-text-fill: white;
+	-fx-border-color: white;
+}
+
+.button {
+	-fx-background-color: transparent;
+	-fx-text-fill: white;
+	-fx-font-size: 17;
+	-fx-border-width: 0px 0px 2px 0px;
+	-fx-border-color: white;
+	-fx-font-weight: bolder;
+}
+
+.button:hover{
+	-fx-text-fill: #999999;
+	-fx-border-color: #999999;
 }

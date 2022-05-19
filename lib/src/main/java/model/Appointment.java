@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Date;
+import java.sql.SQLDataException;
 import java.sql.Time;
 import java.util.Objects;
 import java.util.Optional;
@@ -57,7 +58,7 @@ public class Appointment {
 	}
 
 	public Date getReceiptDate() {
-		return receiptDate.orElse(null);
+		return receiptDate.orElse(date2);
 	}
 	
 	

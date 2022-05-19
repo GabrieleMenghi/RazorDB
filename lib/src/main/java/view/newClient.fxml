@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.NewClientController">
+<VBox prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.NewClientController">
    <children>
       <HBox prefHeight="25.0" prefWidth="200.0">
          <children>
-            <Label text="* = campo obbligatorio">
+            <Label text="* = campo obbligatorio" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -21,7 +21,7 @@
       </HBox>
       <HBox prefHeight="25.0" prefWidth="200.0">
          <children>
-            <Label fx:id="error" prefHeight="17.0" prefWidth="169.0" textFill="#f50808">
+            <Label fx:id="error" prefHeight="18.0" prefWidth="221.0" textFill="#f50808">
                <font>
                   <Font name="Times New Roman" size="15.0" />
                </font>
@@ -30,7 +30,7 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="17.0" prefWidth="154.0" text="*Nome">
+            <Label prefHeight="17.0" prefWidth="154.0" text="*Nome" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="25.0" />
                </font>
@@ -44,7 +44,7 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="200.0">
          <children>
-            <Label prefHeight="29.0" prefWidth="202.0" text="*Cognome">
+            <Label prefHeight="29.0" prefWidth="202.0" text="*Cognome" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="25.0" />
                </font>
@@ -58,7 +58,7 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="200.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="154.0" text="Via">
+            <Label prefHeight="17.0" prefWidth="154.0" text="Via" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="25.0" />
                </font>
@@ -72,7 +72,7 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="200.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="154.0" text="Città">
+            <Label prefHeight="17.0" prefWidth="154.0" text="Città" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="25.0" />
                </font>
@@ -86,7 +86,7 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="200.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="154.0" text="Mail">
+            <Label prefHeight="17.0" prefWidth="154.0" text="Mail" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="25.0" />
                </font>
@@ -100,7 +100,7 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="200.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="154.0" text="Telefono">
+            <Label prefHeight="17.0" prefWidth="154.0" text="Telefono" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="25.0" />
                </font>
@@ -114,7 +114,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="save" mnemonicParsing="false" onMouseClicked="#saveClient" text="Salva">
+            <Button fx:id="save" mnemonicParsing="false" onMouseClicked="#saveClient" stylesheets="@style2.css" text="Salva">
                <HBox.margin>
                   <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
                </HBox.margin>
@@ -122,7 +122,7 @@
                   <Font name="Times New Roman" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="close" mnemonicParsing="false" onMouseClicked="#closeStage" text="Cancella">
+            <Button fx:id="close" mnemonicParsing="false" onMouseClicked="#closeStage" stylesheets="@style2.css" text="Cancella">
                <HBox.margin>
                   <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
                </HBox.margin>
