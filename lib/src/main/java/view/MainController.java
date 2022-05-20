@@ -79,11 +79,14 @@ public class MainController {
 	public void clientAccess(ActionEvent event) throws IOException {
 		adminLabel.setText("");
 		try {
-			if(cTable.isClientPresent(Integer.parseInt(clientCode.getText()))) {
+			final Integer code = Integer.parseInt(clientCode.getText());
+			if(cTable.isClientPresent(code)) {
 				clientLabel.setText("");
 				Stage s2 = (Stage) cliente.getScene().getWindow();
-				String path = "cliente.fxml";
-				root = FXMLLoader.load(getClass().getResource(path));
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("cliente.fxml"));
+				root = (Parent) loader.load();
+				ClientController clientController = loader.getController();
+				clientController.setCode(code);
 				stage = new Stage();
 				scene = new Scene(root);
 				stage.setScene(scene);
@@ -96,6 +99,7 @@ public class MainController {
 			}
 		} catch (Exception e){
 			clientLabel.setText("Inserire un codice valido");
+			throw e;
 		}
 	}
 
