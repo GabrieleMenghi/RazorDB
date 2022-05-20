@@ -51,18 +51,6 @@ public class AppointmentsTable {
     	}
     }
     
-    public List<Appointment> findAppointmentsByDate(final Date date) {
-    	String query = "SELECT * FROM " + TABLE_NAME
-						+ " WHERE Data = ?";
-    	try(final PreparedStatement statement = this.connection.prepareStatement(query)){
-    		statement.setDate(1, date);
-    		final ResultSet rs = statement.executeQuery();
-    		return readAppointmentsFromResultSet(rs);
-    	} catch (final SQLException e) {
-    		throw new IllegalStateException();
-    	}
-    }
-    
     public boolean save(final Appointment appointment) {
         final String query = "INSERT INTO " + TABLE_NAME
         						+ " VALUES (?,?,?,?,?,?,?,?)";

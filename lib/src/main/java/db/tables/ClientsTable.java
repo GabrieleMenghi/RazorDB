@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Types;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
@@ -48,10 +49,10 @@ public class ClientsTable {
         try (final PreparedStatement statement = this.connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, client.getFirstName());
             statement.setString(2, client.getLastName());
-            statement.setString(3, client.getAddress());
-            statement.setString(4, client.getCity());
-            statement.setString(5, client.getMail());
-            statement.setLong(6, client.getPhone());
+            statement.setObject(3, client.getAddress(), Types.VARCHAR);
+            statement.setObject(4, client.getCity(), Types.VARCHAR);
+            statement.setObject(5, client.getMail(), Types.VARCHAR);
+            statement.setObject(6, client.getPhone(), Types.BIGINT);
             statement.executeUpdate();
             try(ResultSet key = statement.getGeneratedKeys()){
             	if(key.next()) {

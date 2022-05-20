@@ -28,14 +28,14 @@ public class TestConnection {
     final static ClientsTable cTable = new ClientsTable(connectionProvider.getMySQLConnection());
 	
     private long n1 = 3912258161L;
-    Client c1 = new Client(1, "Gabriele", "Menghi", Optional.empty(), Optional.of("Rimini"), 
-			Optional.of("gabry.menghi@gmail.com"), Optional.of(n1));
+    Client c1 = new Client(1, "Gabriele", "Menghi", null, "Rimini", 
+			"gabry.menghi@gmail.com", n1);
     long n2 = 3928458171L;
-	Client c2 = new Client(2, "Marco", "Verdi", Optional.empty(), Optional.of("Cesena"), 
-			Optional.of("marcoverdi@gmail.com"), Optional.of(n2));
+	Client c2 = new Client(2, "Marco", "Verdi", null, "Cesena", 
+			"marcoverdi@gmail.com", n2);
 	long n3 = 3362558472L;
-	Client c3 = new Client(4, "Giacomo", "Bianchi", Optional.of("Via Arancioni 31"), Optional.of("Bologna"), 
-			Optional.of("giacomobianchi@gmail.com"), Optional.of(n3));
+	Client c3 = new Client(4, "Giacomo", "Bianchi", "Via Arancioni 31", "Bologna", 
+			"giacomobianchi@gmail.com", n3);
 	/*Client c4 = new Client("Raffele", "Marroni", Optional.of("Via"), Optional.of("Citta"), 
 			Optional.of("Mail2"), Optional.of(null));*/
 	/*@Test

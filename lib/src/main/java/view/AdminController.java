@@ -11,6 +11,7 @@ import db.ConnectionProvider;
 import db.tables.AppointmentsTable;
 import db.tables.BarbersTable;
 import db.tables.ClientsTable;
+import db.tables.DetailedAppointmentsTable;
 import db.tables.ReceiptsTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,6 +33,7 @@ import javafx.stage.Stage;
 import model.Appointment;
 import model.Barber;
 import model.Client;
+import model.DetailedAppointment;
 import model.Receipt;
 import utils.Utils;
 
@@ -116,25 +118,30 @@ public class AdminController implements Initializable{
      *   APPUNTAMENTI  *
      * *************** */
 final static AppointmentsTable aTable = new AppointmentsTable(connectionProvider.getMySQLConnection());
+final static DetailedAppointmentsTable daTable = new DetailedAppointmentsTable(connectionProvider.getMySQLConnection());
 	
 	@FXML
-	TableView<Appointment> appointmentsTable;
+	TableView<DetailedAppointment> appointmentsTable;
 	
 	@FXML
-	TableColumn<Appointment, String> c_a_date;
+	TableColumn<DetailedAppointment, String> c_a_date;
 	@FXML
-	TableColumn<Appointment, String> c_a_time;
+	TableColumn<DetailedAppointment, String> c_a_time;
 	@FXML
-	TableColumn<Appointment, String> c_a_bookingclient;
+	TableColumn<DetailedAppointment, String> c_a_bookingclient;
+	@FXML
+	TableColumn<DetailedAppointment, String> c_a_clientfirstname;
+	@FXML
+	TableColumn<DetailedAppointment, String> c_a_clientlastname;
 	@FXML
 	DatePicker date;
 	
 	@FXML
 	public void viewAppointments() {
-		final ObservableList<Appointment> data =
+		final ObservableList<DetailedAppointment> data =
 		        FXCollections.observableArrayList();
-		aTable.findAll().forEach(a -> {
-			data.add(a);
+		daTable.findAll().forEach(da -> {
+			data.add(da);
 		});
 		appointmentsTable.setItems(data);
 	}
@@ -142,12 +149,12 @@ final static AppointmentsTable aTable = new AppointmentsTable(connectionProvider
 	@FXML
 	public void viewAppByDate() {
 		Date d = Utils.buildDate(date.getValue().getDayOfMonth(), date.getValue().getMonthValue(), date.getValue().getYear()).get();
-		final ObservableList<Appointment> data =
+		final ObservableList<DetailedAppointment> data =
 		        FXCollections.observableArrayList();
-		aTable.findAppointmentsByDate(Utils.dateToSqlDate(d)).forEach(a -> {
+		daTable.findAppointmentsByDate(Utils.dateToSqlDate(d)).forEach(a -> {
 			data.add(a);
 		});
-		appointmentsTable.setItems(data);
+		appointmentsTable.getItems().setAll(data);
 	}
 	
 	@FXML
@@ -264,7 +271,9 @@ final static ReceiptsTable rTable = new ReceiptsTable(connectionProvider.getMySQ
 		viewAppointments();
 		c_a_date.setCellValueFactory(new PropertyValueFactory<>("date"));
 		c_a_time.setCellValueFactory(new PropertyValueFactory<>("time"));
-		c_a_bookingclient.setCellValueFactory(new PropertyValueFactory<>("idBookingClient"));
+		c_a_bookingclient.setCellValueFactory(new PropertyValueFactory<>("idClient"));
+		c_a_clientfirstname.setCellValueFactory(new PropertyValueFactory<>("clientFirstName"));
+		c_a_clientlastname.setCellValueFactory(new PropertyValueFactory<>("clientLastName"));
 		
 		//SCONTRINI
 		viewReceipts();

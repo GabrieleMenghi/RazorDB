@@ -46,20 +46,20 @@ public class NewClientController {
 			Client c;
 			if(fphone.getText().isEmpty()) {
 				c = new Client(ffirstname.getText(), 
-						flastname.getText(), 
-						getOptional(faddress.getText()), 
-						getOptional(fcity.getText()), 
-						getOptional(fmail.getText()), 
-						null);
-						cTable.save(c);
+								flastname.getText(), 
+								getOptional(faddress.getText()), 
+								getOptional(fcity.getText()), 
+								getOptional(fmail.getText()), 
+								null);
+				cTable.save(c);
 			} else {
 				c = new Client(ffirstname.getText(), 
-										flastname.getText(), 
-										getOptional(faddress.getText()), 
-										getOptional(fcity.getText()), 
-										getOptional(fmail.getText()), 
-										Long.decode(fphone.getText()));
-										cTable.save(c);
+								flastname.getText(), 
+								getOptional(faddress.getText()), 
+								getOptional(fcity.getText()), 
+								getOptional(fmail.getText()), 
+								Long.decode(fphone.getText()));
+				cTable.save(c);
 			}
 			s2.close();
 		}
@@ -72,7 +72,7 @@ public class NewClientController {
 	}
 	
 	private String getOptional(String text){
-		if(text.equals("")) {
+		if(text.isEmpty()) {
 			return null;
 		}
 		return text;
