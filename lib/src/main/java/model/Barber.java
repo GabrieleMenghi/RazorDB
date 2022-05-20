@@ -5,16 +5,16 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class Barber {
-	private int id;
+	private Integer id;
 	private String firstName;
 	private String lastName;
 	private String cf;
 	private Date birthDate;
 	private String type;
-	private Optional<Long> piva;
+	private Long piva;
 	
-	public Barber(int id, String firstName, String lastName, String cf, Date birthDate, String type,
-			Optional<Long> piva) {
+	public Barber(Integer id, String firstName, String lastName, String cf, Date birthDate, String type,
+			Long piva) {
 		this.id = Objects.requireNonNull(id);
 		this.firstName = Objects.requireNonNull(firstName);
 		this.lastName = Objects.requireNonNull(lastName);
@@ -24,7 +24,7 @@ public class Barber {
 		this.piva = piva;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -48,8 +48,8 @@ public class Barber {
 		return type;
 	}
 
-	public long getPiva() {
-		return piva.orElse(null);
+	public Long getPiva() {
+		return piva;
 	}
 	
 	

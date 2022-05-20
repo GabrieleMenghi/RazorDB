@@ -1,19 +1,18 @@
 package model;
 
 import java.util.Objects;
-import java.util.Optional;
 
 public class Client {
-	private int id;
+	private Integer id;
 	private String firstName;
 	private String lastName;
-	private Optional<String> address;
-	private Optional<String> city;
-	private Optional<String> mail;
-	private Optional<Long> phone;
+	private String address;
+	private String city;
+	private String mail;
+	private Long phone;
 	
-	public Client(final int id, final String firstName, final String lastName, final Optional<String> address, 
-			final Optional<String> city, final Optional<String> mail, final Optional<Long> phone) {
+	public Client(final Integer id, final String firstName, final String lastName, final String address, 
+			final String city, final String mail, final Long phone) {
         this.id = Objects.requireNonNull(id);
         this.firstName = Objects.requireNonNull(firstName);
         this.lastName = Objects.requireNonNull(lastName);
@@ -23,8 +22,8 @@ public class Client {
         this.phone = phone;
     }
 	
-	public Client(final String firstName, final String lastName, final Optional<String> address, 
-			final Optional<String> city, final Optional<String> mail, final Optional<Long> phone) {
+	public Client(final String firstName, final String lastName, final String address, 
+			final String city, final String mail, final Long phone) {
         this.firstName = Objects.requireNonNull(firstName);
         this.lastName = Objects.requireNonNull(lastName);
         this.address = address;
@@ -33,7 +32,7 @@ public class Client {
         this.phone = phone;
     }
 	
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 	
@@ -50,19 +49,19 @@ public class Client {
 	}
 
 	public String getAddress() {
-		return address.orElse(null);
+		return address;
 	}
 
 	public String getCity() {
-		return city.orElse(null);
+		return city;
 	}
 
 	public String getMail() {
-		return mail.orElse(null);
+		return mail;
 	}
 
 	public Long getPhone() {
-		return phone.orElse(null);
+		return phone;
 	}
 
 	@Override

@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import model.Barber;
 
 public class BarbersTable {
@@ -30,7 +29,7 @@ public class BarbersTable {
 						 				rs.getString(4), 
 						 				rs.getDate(5),
 						 				rs.getString(6), 
-						 				Optional.ofNullable(rs.getLong(7))));
+						 				rs.getLong(7)));
 			}
     	} catch (final SQLException e) {
     		throw new IllegalStateException();

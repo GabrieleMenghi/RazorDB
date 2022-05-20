@@ -9,7 +9,6 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import model.Client;
 
 public class ClientsTable {
@@ -27,8 +26,8 @@ public class ClientsTable {
         try {
 			while(resultSet.next()) {
 				 clients.add(new Client(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), 
-						 Optional.ofNullable(resultSet.getString(4)), Optional.ofNullable(resultSet.getString(5)), 
-						 Optional.ofNullable(resultSet.getString(6)), Optional.ofNullable(resultSet.getLong(7))));
+						 resultSet.getString(4), resultSet.getString(5), 
+						 resultSet.getString(6), resultSet.getLong(7)));
 			}
         } catch (SQLException e) {}
         return clients;

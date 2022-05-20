@@ -1,6 +1,5 @@
 package view;
 
-import java.util.Optional;
 import db.ConnectionProvider;
 import db.tables.ClientsTable;
 import javafx.fxml.FXML;
@@ -51,7 +50,7 @@ public class NewClientController {
 						getOptional(faddress.getText()), 
 						getOptional(fcity.getText()), 
 						getOptional(fmail.getText()), 
-						Optional.of(0L));
+						null);
 						cTable.save(c);
 			} else {
 				c = new Client(ffirstname.getText(), 
@@ -59,7 +58,7 @@ public class NewClientController {
 										getOptional(faddress.getText()), 
 										getOptional(fcity.getText()), 
 										getOptional(fmail.getText()), 
-										Optional.of(Long.decode(fphone.getText())));
+										Long.decode(fphone.getText()));
 										cTable.save(c);
 			}
 			s2.close();
@@ -72,10 +71,10 @@ public class NewClientController {
 		s2.close();
 	}
 	
-	private Optional<String> getOptional(String text){
+	private String getOptional(String text){
 		if(text.equals("")) {
-			return Optional.empty();
+			return null;
 		}
-		return Optional.of(text);
+		return text;
 	}
 }

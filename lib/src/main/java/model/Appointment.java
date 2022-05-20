@@ -7,17 +7,17 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class Appointment {
-	private int idPerformingBarber;
+	private Integer idPerformingBarber;
 	private Date date;
 	private Time time;
-	private int idBookingClient;
+	private Integer idBookingClient;
 	private Integer idPerformingClient;
-	private int idBookingBarber;
+	private Integer idBookingBarber;
 	private Integer receiptNumber;
 	private Date receiptDate;
 	
-	public Appointment(int idPerformingBarber, Date date, Time time, int idBookingClient, Integer idPerformingClient,
-			int idBookingBarber, Integer receiptNumber, Date receiptDate) {
+	public Appointment(Integer idPerformingBarber, Date date, Time time, Integer idBookingClient, Integer idPerformingClient,
+			Integer idBookingBarber, Integer receiptNumber, Date receiptDate) {
 		this.idPerformingBarber = idPerformingBarber;
 		this.date = date;
 		this.time = time;
@@ -28,7 +28,7 @@ public class Appointment {
 		this.receiptDate = receiptDate;
 	}
 	
-	public int getIdPerformingBarber() {
+	public Integer getIdPerformingBarber() {
 		return idPerformingBarber;
 	}
 	public Date getDate() {
@@ -37,13 +37,13 @@ public class Appointment {
 	public Time getTime() {
 		return time;
 	}
-	public int getIdBookingClient() {
+	public Integer getIdBookingClient() {
 		return idBookingClient;
 	}
 	public Integer getIdPerformingClient() {
 		return idPerformingClient;
 	}
-	public int getIdBookingBarber() {
+	public Integer getIdBookingBarber() {
 		return idBookingBarber;
 	}
 	public Integer getReceiptNumber() {
