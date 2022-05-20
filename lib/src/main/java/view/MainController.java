@@ -46,12 +46,13 @@ public class MainController {
 	@FXML
 	Label clientLabel;
 	
-	private Stage stage;
-	private Scene scene;
-	private Parent root;
+
 	
 	@FXML
 	public void adminAccess(ActionEvent event) throws IOException {
+		Stage stage;
+		Scene scene;
+		Parent root;
 		clientLabel.setText("");
 		if(adminPassword.getText().isEmpty()) {
 			adminLabel.setText("Inserisci una password");
@@ -77,6 +78,9 @@ public class MainController {
 	
 	@FXML
 	public void clientAccess(ActionEvent event) throws IOException {
+		Stage stage;
+		Scene scene;
+		Parent root;
 		adminLabel.setText("");
 		try {
 			final Integer code = Integer.parseInt(clientCode.getText());
@@ -99,7 +103,6 @@ public class MainController {
 			}
 		} catch (Exception e){
 			clientLabel.setText("Inserire un codice valido");
-			throw e;
 		}
 	}
 

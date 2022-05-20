@@ -117,7 +117,6 @@ public class AdminController implements Initializable{
 	/* *************** *
      *   APPUNTAMENTI  *
      * *************** */
-final static AppointmentsTable aTable = new AppointmentsTable(connectionProvider.getMySQLConnection());
 final static DetailedAppointmentsTable daTable = new DetailedAppointmentsTable(connectionProvider.getMySQLConnection());
 	
 	@FXML

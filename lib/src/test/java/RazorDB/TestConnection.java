@@ -14,9 +14,11 @@ import org.junit.jupiter.api.Test;
 
 import db.ConnectionProvider;
 import db.tables.AppointmentsTable;
+import db.tables.ClientAppointmentsTable;
 import db.tables.ClientsTable;
 import model.Appointment;
 import model.Client;
+import model.ClientAppointment;
 
 public class TestConnection {
 	
@@ -70,4 +72,14 @@ public class TestConnection {
 	public void testNewAppointment() {
 		assertTrue(aTable.save(a1));
 	}*/
+	
+	final static ClientAppointmentsTable caTable = new ClientAppointmentsTable(connectionProvider.getMySQLConnection());
+	
+	ClientAppointment ca1 = new ClientAppointment(Date.valueOf("2022-05-19"), Time.valueOf("09:30:00"), "Lorenzo", 0, null);
+	ClientAppointment ca2 = new ClientAppointment(Date.valueOf("2022-05-27"), Time.valueOf("17:45:00"), "Lorenzo", 0, null);
+	ClientAppointment ca3 = new ClientAppointment(Date.valueOf("2022-05-31"), Time.valueOf("11:45:00"), "Lorenzo", 0, null);
+	@Test
+	public void testFindApp() {
+		assertEquals(List.of(ca1,ca2,ca3), caTable.findAll(1));
+	}
 }
