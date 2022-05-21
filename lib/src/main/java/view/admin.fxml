@@ -35,8 +35,8 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <FontAwesomeIcon fill="WHITE" glyphName="REFRESH" onMouseClicked="#refresh" size="40" />
-                                    <Label onMouseClicked="#refresh" text="Aggiorna clienti" textFill="WHITE">
+                                    <FontAwesomeIcon fill="WHITE" glyphName="REFRESH" onMouseClicked="#refreshClients" size="40" />
+                                    <Label onMouseClicked="#refreshClients" text="Aggiorna clienti" textFill="WHITE">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -76,6 +76,16 @@
                                           <TextField />
                                        </children>
                                     </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="EYE" onMouseClicked="#viewDetails" size="40" />
+                                    <Label onMouseClicked="#viewDetails" text="Vedi dettagli" textFill="WHITE">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </HBox>
                            </children>
@@ -157,6 +167,25 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="EDIT" size="40" />
+                                    <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="139.0">
+                                       <children>
+                                          <Label text="Modifica" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Appuntamento" textFill="WHITE">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
                                  </children>
                               </HBox>
                            </children></VBox>

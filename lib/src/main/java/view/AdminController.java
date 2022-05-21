@@ -81,7 +81,7 @@ public class AdminController implements Initializable{
 	}
 	
 	@FXML
-	public void refresh() {
+	public void refreshClients() {
 		clientsTable.refresh();
 		final ObservableList<Client> data =
 		        FXCollections.observableArrayList();
@@ -126,7 +126,7 @@ public class AdminController implements Initializable{
 	}
 	
 	@FXML
-	public void updateClient() throws IOException {
+	public void updateClient() {
 		Stage stage;
 		Scene scene;
 		Parent root;
@@ -176,6 +176,57 @@ public class AdminController implements Initializable{
 		} catch (Exception e) {}
 	}
 	
+	@FXML
+	public void viewDetails() {
+		Stage stage;
+		Scene scene;
+		Parent root;
+		var sel = clientsTable.getSelectionModel().getSelectedItem();
+		try {
+			if(!sel.equals(null) && !(cTable.findFidelityById(sel.getId()) == null)) {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("viewDetails.fxml"));
+				root = (Parent) loader.load();
+				ClientDetailsController controller = loader.getController();
+				controller.link(sel.getId(),
+								sel.getFirstName(), 
+								sel.getLastName(), 
+								sel.getAddress(), 
+								sel.getCity(), 
+								sel.getMail(), 
+								sel.getPhone(), 
+								cTable.findFidelityById(sel.getId()).getCode(), 
+								cTable.findFidelityById(sel.getId()).getBalance());
+				stage = new Stage();
+				stage.getIcons().add(new Image("images/logoRazor.jpg"));
+				stage.setTitle("Dettagli cliente");
+				stage.setResizable(false);
+				scene = new Scene(root);
+				stage.setScene(scene);
+				stage.show();
+			} else if(!(sel.equals(null)) && (cTable.findFidelityById(sel.getId())) == null){
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("viewDetails.fxml"));
+				root = (Parent) loader.load();
+				ClientDetailsController controller = loader.getController();
+				controller.link(sel.getId(),
+								sel.getFirstName(), 
+								sel.getLastName(), 
+								sel.getAddress(), 
+								sel.getCity(), 
+								sel.getMail(), 
+								sel.getPhone(), 
+								null, 
+								null);
+				stage = new Stage();
+				stage.getIcons().add(new Image("images/logoRazor.jpg"));
+				stage.setTitle("Dettagli cliente");
+				stage.setResizable(false);
+				scene = new Scene(root);
+				stage.setScene(scene);
+				stage.show();
+			}
+		} catch (Exception e) {}
+	}
+	
 	/* *************** *
      *   APPUNTAMENTI  *
      * *************** */
@@ -205,6 +256,16 @@ final static DetailedAppointmentsTable daTable = new DetailedAppointmentsTable(c
 			data.add(da);
 		});
 		appointmentsTable.setItems(data);
+	}
+
+	private void refreshAppointments() {
+		appointmentsTable.refresh();
+		final ObservableList<DetailedAppointment> data =
+		        FXCollections.observableArrayList();
+		daTable.findAll().forEach(da -> {
+			data.add(da);
+		});
+		appointmentsTable.getItems().setAll(data);
 	}
 	
 	@FXML
