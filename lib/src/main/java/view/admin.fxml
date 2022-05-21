@@ -65,15 +65,15 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" size="40" />
+                                    <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" onMouseClicked="#searchClientByName" size="40" />
                                     <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="146.0">
                                        <children>
-                                          <Label text="Cerca per nome" textFill="WHITE">
+                                          <Label onMouseClicked="#searchClientByName" text="Cerca per nome" textFill="WHITE">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <TextField />
+                                          <TextField fx:id="nameSearch" />
                                        </children>
                                     </VBox>
                                  </children>

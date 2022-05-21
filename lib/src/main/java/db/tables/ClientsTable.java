@@ -150,4 +150,17 @@ public class ClientsTable {
     		return false;
     	}
     }
+    
+    public List<Client> viewClientsByName(final String name) throws SQLException{
+    	//String query = "{call searchClienyByName (?)}";
+    	String query = "SELECT * FROM " + TABLE_NAME
+    					+ " WHERE Nome LIKE ?";
+    	try(PreparedStatement st = this.connection.prepareStatement(query)){
+    		st.setString(1, "%" + name + "%");
+    		ResultSet rs = st.executeQuery();
+    		return readClientsFromResultSet(rs);
+    	} catch (SQLException e) {
+    		throw e;
+    	}
+    }
 }

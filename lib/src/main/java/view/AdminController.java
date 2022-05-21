@@ -2,6 +2,7 @@ package view;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Optional;
@@ -27,6 +28,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -67,6 +69,9 @@ public class AdminController implements Initializable{
 	TableColumn<Client, String> c_c_mail;
 	@FXML
 	TableColumn<Client, String> c_c_phone;
+	
+	@FXML
+	TextField nameSearch;
 	
 	
 	
@@ -225,6 +230,19 @@ public class AdminController implements Initializable{
 				stage.show();
 			}
 		} catch (Exception e) {}
+	}
+	
+	@FXML
+	public void searchClientByName() throws SQLException {
+		if(!nameSearch.getText().isEmpty()) {
+			clientsTable.refresh();
+			final ObservableList<Client> data =
+					FXCollections.observableArrayList();
+			cTable.viewClientsByName(nameSearch.getText()).forEach(c -> {
+				data.add(c);
+			});
+			clientsTable.getItems().setAll(data);
+		}
 	}
 	
 	/* *************** *
