@@ -79,6 +79,17 @@ public class AdminController implements Initializable{
 		});
 		clientsTable.setItems(data);
 	}
+	
+	@FXML
+	public void refresh() {
+		clientsTable.refresh();
+		final ObservableList<Client> data =
+		        FXCollections.observableArrayList();
+		cTable.findAll().forEach(c -> {
+			data.add(c);
+		});
+		clientsTable.getItems().setAll(data);
+	}
 
 	@FXML
 	public void createClient() throws IOException {

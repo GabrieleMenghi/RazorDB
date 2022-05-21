@@ -35,8 +35,8 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <FontAwesomeIcon fill="WHITE" glyphName="REFRESH" onMouseClicked="#viewCustomers" size="40" />
-                                    <Label onMouseClicked="#viewCustomers" text="Aggiorna clienti" textFill="WHITE">
+                                    <FontAwesomeIcon fill="WHITE" glyphName="REFRESH" onMouseClicked="#refresh" size="40" />
+                                    <Label onMouseClicked="#refresh" text="Aggiorna clienti" textFill="WHITE">
                                        <font>
                                           <Font size="18.0" />
                                        </font>

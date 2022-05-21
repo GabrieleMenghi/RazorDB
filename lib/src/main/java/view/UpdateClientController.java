@@ -123,13 +123,13 @@ public class UpdateClientController {
 							getString(fcity.getText()), 
 							getString(fmail.getText()), 
 							getLong(fphone.getText()));
-			f = new Fidelity(this.fidelityNumber, 
-								getInteger(fbalance.getText()), 
-								this.id);
-			System.out.println(c);
-			System.out.println(f);
 			cTable.updateClient(c);
-			cTable.updateFidelity(f);
+			if(fidelityNumber != null) {
+				f = new Fidelity(this.fidelityNumber, 
+						getInteger(fbalance.getText()), 
+						this.id);
+				cTable.updateFidelity(f);
+			}
 			s2.close();
 		}
 	}
