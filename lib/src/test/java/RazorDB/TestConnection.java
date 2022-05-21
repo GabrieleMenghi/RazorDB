@@ -82,4 +82,10 @@ public class TestConnection {
 	public void testFindApp() {
 		assertEquals(List.of(ca1,ca2,ca3), caTable.findAll(1));
 	}
+	
+	Client ctest = new Client(1, "Gabri", "Menghi", null, "Rimini", "gabry.menghi@gmail.com", 3912258161L);
+	@Test
+	public void testUpdate() {
+		assertTrue(cTable.updateClient(ctest));
+	}
 }

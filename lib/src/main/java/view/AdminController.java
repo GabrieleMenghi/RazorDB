@@ -54,19 +54,19 @@ public class AdminController implements Initializable{
 	TableView<Client> clientsTable;
 	
 	@FXML
-	TableColumn<Client, String> codcliente;
+	TableColumn<Client, String> c_c_id;
 	@FXML
-	TableColumn<Client, String> nome;
+	TableColumn<Client, String> c_c_firstname;
 	@FXML
-	TableColumn<Client, String> cognome;
+	TableColumn<Client, String> c_c_lastname;
 	@FXML
-	TableColumn<Client, String> via;
+	TableColumn<Client, String> c_c_address;
 	@FXML
-	TableColumn<Client, String> città;
+	TableColumn<Client, String> c_c_city;
 	@FXML
-	TableColumn<Client, String> mail;
+	TableColumn<Client, String> c_c_mail;
 	@FXML
-	TableColumn<Client, String> telefono;
+	TableColumn<Client, String> c_c_phone;
 	
 	
 	
@@ -112,6 +112,57 @@ public class AdminController implements Initializable{
 		} else if ((result.isPresent()) && (result.get() == ButtonType.CANCEL)) {
 			alert.close();
 		}
+	}
+	
+	@FXML
+	public void updateClient() throws IOException {
+		Stage stage;
+		Scene scene;
+		Parent root;
+		var sel = clientsTable.getSelectionModel().getSelectedItem();
+		try {
+			if(!sel.equals(null) && !(cTable.findFidelityById(sel.getId()) == null)) {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("updateClient.fxml"));
+				root = (Parent) loader.load();
+				UpdateClientController controller = loader.getController();
+				controller.link(sel.getId(),
+								sel.getFirstName(), 
+								sel.getLastName(), 
+								sel.getAddress(), 
+								sel.getCity(), 
+								sel.getMail(), 
+								sel.getPhone(), 
+								cTable.findFidelityById(sel.getId()).getCode(), 
+								cTable.findFidelityById(sel.getId()).getBalance());
+				stage = new Stage();
+				stage.getIcons().add(new Image("images/logoRazor.jpg"));
+				stage.setTitle("Aggiorna cliente");
+				stage.setResizable(false);
+				scene = new Scene(root);
+				stage.setScene(scene);
+				stage.show();
+			} else if(!(sel.equals(null)) && (cTable.findFidelityById(sel.getId())) == null){
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("updateClient.fxml"));
+				root = (Parent) loader.load();
+				UpdateClientController controller = loader.getController();
+				controller.link(sel.getId(),
+								sel.getFirstName(), 
+								sel.getLastName(), 
+								sel.getAddress(), 
+								sel.getCity(), 
+								sel.getMail(), 
+								sel.getPhone(), 
+								null, 
+								null);
+				stage = new Stage();
+				stage.getIcons().add(new Image("images/logoRazor.jpg"));
+				stage.setTitle("Aggiorna cliente");
+				stage.setResizable(false);
+				scene = new Scene(root);
+				stage.setScene(scene);
+				stage.show();
+			}
+		} catch (Exception e) {}
 	}
 	
 	/* *************** *
@@ -248,13 +299,13 @@ final static ReceiptsTable rTable = new ReceiptsTable(connectionProvider.getMySQ
 	public void initialize(URL location, ResourceBundle resources) {
 		//CLIENTI
 		viewCustomers();
-		codcliente.setCellValueFactory(new PropertyValueFactory<>("id"));
-		nome.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-		cognome.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-		via.setCellValueFactory(new PropertyValueFactory<>("address"));
-		città.setCellValueFactory(new PropertyValueFactory<>("city"));
-		mail.setCellValueFactory(new PropertyValueFactory<>("mail"));
-		telefono.setCellValueFactory(new PropertyValueFactory<>("phone"));
+		c_c_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+		c_c_firstname.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+		c_c_lastname.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+		c_c_address.setCellValueFactory(new PropertyValueFactory<>("address"));
+		c_c_city.setCellValueFactory(new PropertyValueFactory<>("city"));
+		c_c_mail.setCellValueFactory(new PropertyValueFactory<>("mail"));
+		c_c_phone.setCellValueFactory(new PropertyValueFactory<>("phone"));
 		
 		//BARBIERI
 		viewBarbers();

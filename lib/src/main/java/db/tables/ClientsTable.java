@@ -1,5 +1,6 @@
 package db.tables;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +11,9 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
 import model.Client;
+import model.Fidelity;
 
 public class ClientsTable {
 	
@@ -99,5 +102,52 @@ public class ClientsTable {
         } catch (final SQLException e) {
             return false;
         }
+    }
+    
+    public Fidelity findFidelityById(final Integer id) {
+    	Fidelity f = null;
+    	String query = "SELECT * FROM"
+				+ " fidelity f"
+				+ " WHERE f.CodCliente = ?"
+				+ " ORDER BY f.CodFidelity DESC"
+				+ " LIMIT 1";
+    	try(final PreparedStatement statement = this.connection.prepareStatement(query)){
+    		statement.setInt(1, id);
+    		final ResultSet rs = statement.executeQuery();
+    		while(rs.next()) {
+    			f = new Fidelity(rs.getInt(1), rs.getInt(2), rs.getInt(3));
+    		}
+    		return f;
+    	} catch (final Exception e) {
+    		return null;
+    	}
+    }
+    
+    public boolean updateClient(final Client client) {
+    	String query = "{call updateClient (?,?,?,?,?,?,?)}";
+    	try(CallableStatement cs = this.connection.prepareCall(query)){
+    		cs.setString(1, client.getFirstName());
+    		cs.setString(2, client.getLastName());
+    		cs.setObject(3, client.getAddress(), Types.VARCHAR);
+    		cs.setObject(4, client.getCity(), Types.VARCHAR);
+    		cs.setObject(5, client.getMail(), Types.VARCHAR);
+    		cs.setObject(6, client.getPhone(), Types.BIGINT);
+    		cs.setInt(7, client.getId());
+    		return cs.executeUpdate() > 0;
+    	} catch (SQLException e) {
+    		return false;
+    	}
+    			
+    }
+    
+    public boolean updateFidelity(final Fidelity fidelity) {
+    	String query = "{call updateFidelity (?,?)}";
+    	try(CallableStatement cs = this.connection.prepareCall(query)){
+    		cs.setInt(1, fidelity.getBalance());
+	    	cs.setInt(2, fidelity.getClientId());
+    		return cs.executeUpdate() > 0;
+    	} catch (SQLException e) {
+    		return false;
+    	}
     }
 }
