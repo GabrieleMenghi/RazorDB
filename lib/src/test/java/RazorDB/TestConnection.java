@@ -86,6 +86,7 @@ public class TestConnection {
 	Client ctest = new Client(1, "Gabri", "Menghi", null, "Rimini", "gabry.menghi@gmail.com", 3912258161L);
 	@Test
 	public void testUpdate() {
-		assertTrue(cTable.updateClient(ctest));
+		//assertTrue(cTable.updateClient(ctest));
+		System.out.println(cTable.findClientById(1));
 	}
 }

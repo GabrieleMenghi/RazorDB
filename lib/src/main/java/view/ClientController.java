@@ -1,22 +1,20 @@
 package view;
 
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
-
 import db.ConnectionProvider;
 import db.tables.ClientAppointmentsTable;
-import db.tables.DetailedAppointmentsTable;
+import db.tables.ClientsTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import model.Client;
 import model.ClientAppointment;
-import model.DetailedAppointment;
 
 public class ClientController implements Initializable{
 	
@@ -36,13 +34,24 @@ public class ClientController implements Initializable{
 			data.add(da);
 		});
 		appointmentsTable.setItems(data);
+		
+		ffirstname.setText(cTable.findClientById(clientCode).getFirstName());
+		flastname.setText(cTable.findClientById(clientCode).getLastName());
+		faddress.setText(cTable.findClientById(clientCode).getAddress());
+		fcity.setText(cTable.findClientById(clientCode).getCity());
+		fmail.setText(cTable.findClientById(clientCode).getMail());
+		if(cTable.findClientById(clientCode).getPhone() == null) {
+			fphone.setText("");
+		} else {
+			fphone.setText(String.valueOf(cTable.findClientById(clientCode).getPhone()));
+		}
 	}
 	
    /* *************** *
     *   APPUNTAMENTI  *
     * *************** */
     
-final static ClientAppointmentsTable aTable = new ClientAppointmentsTable(connectionProvider.getMySQLConnection());
+	final static ClientAppointmentsTable aTable = new ClientAppointmentsTable(connectionProvider.getMySQLConnection());
 
 	@FXML
 	TableView<ClientAppointment> appointmentsTable;
@@ -68,6 +77,49 @@ final static ClientAppointmentsTable aTable = new ClientAppointmentsTable(connec
 		appointmentsTable.getItems().setAll(data);
 	}
 	
+	/* *************** *
+	 *      DATI       *
+	 * *************** */
+	final static ClientsTable cTable = new ClientsTable(connectionProvider.getMySQLConnection());
+	
+	@FXML
+	TextField ffirstname;
+	@FXML
+	TextField flastname;
+	@FXML
+	TextField faddress;
+	@FXML
+	TextField fcity;
+	@FXML
+	TextField fmail;
+	@FXML
+	TextField fphone;
+	
+	@FXML
+	public void save() {
+		Client newClient = new Client(clientCode, 
+										ffirstname.getText(), 
+										flastname.getText(), 
+										getString(faddress.getText()), 
+										getString(fcity.getText()), 
+										getString(fmail.getText()), 
+										getLong(fphone.getText()));
+		cTable.updateClient(newClient);
+	}
+	
+	private String getString(String text){
+		if(text == null || text.isEmpty() || text.isBlank()) {
+			return null;
+		}
+		return text;
+	}
+	
+	private Long getLong(String text){
+		if(text == null || text.isEmpty() || text.isBlank()) {
+			return null;
+		}
+		return Long.decode(text);
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

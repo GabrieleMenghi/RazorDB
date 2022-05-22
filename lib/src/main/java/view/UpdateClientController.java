@@ -124,23 +124,23 @@ public class UpdateClientController {
 	}
 	
 	private String getString(String text){
-		if(text.isEmpty() || text == null || text.length() == 0) {
+		if(text == null || text.isEmpty() || text.isBlank()) {
 			return null;
 		}
 		return text;
 	}
 	
-	private Integer getInteger(String text){
-		if(text.isEmpty() || text == null || text.length() == 0) {
-			return null;
-		}
-		return Integer.parseInt(text);
-	}
-	
 	private Long getLong(String text){
-		if(text.isEmpty() || text == null || text.length() == 0) {
+		if(text == null || text.isEmpty() || text.isBlank()) {
 			return null;
 		}
 		return Long.decode(text);
+	}
+	
+	private Integer getInteger(String text){
+		if(text == null || text.isEmpty() || text.isBlank()) {
+			return null;
+		}
+		return Integer.parseInt(text);
 	}
 }

@@ -162,4 +162,22 @@ public class ClientsTable {
     		throw e;
     	}
     }
+    
+    public Client findClientById(final Integer id) {
+    	Client c = null;
+    	String query = "SELECT * FROM " + TABLE_NAME
+						+ " WHERE CodCliente = ?";
+    	try(final PreparedStatement statement = this.connection.prepareStatement(query)){
+    		statement.setInt(1, id);
+    		final ResultSet rs = statement.executeQuery();
+    		while(rs.next()) {
+    			c = new Client(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
+    							rs.getString(5), rs.getString(6), rs.getLong(7));
+    		}
+    		//System.out.println(c);
+    		return c;
+    	} catch (final Exception e) {
+    		return null;
+    	}
+    }
 }
