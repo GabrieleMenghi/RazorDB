@@ -152,7 +152,6 @@ public class ClientsTable {
     }
     
     public List<Client> viewClientsByName(final String name) throws SQLException{
-    	//String query = "{call searchClienyByName (?)}";
     	String query = "SELECT * FROM " + TABLE_NAME
     					+ " WHERE Nome LIKE ?";
     	try(PreparedStatement st = this.connection.prepareStatement(query)){

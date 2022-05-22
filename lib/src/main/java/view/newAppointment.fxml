@@ -13,7 +13,7 @@
    <children>
       <HBox prefHeight="25.0" prefWidth="200.0">
          <children>
-            <Label text="* = campo obbligatorio" textFill="WHITE">
+            <Label text=" * = campo obbligatorio" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="16.0" />
                </font>
@@ -31,21 +31,21 @@
       </HBox>
       <HBox prefHeight="40.0" prefWidth="200.0">
          <children>
-            <Label prefWidth="300.0" text="*Barbiere effettuante" textFill="WHITE">
+            <Label prefHeight="23.0" prefWidth="337.0" text=" Barbiere effettuante*" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="20.0" />
                </font>
             </Label>
             <TextField fx:id="fperformingBarber" prefWidth="440.0" styleClass="text" stylesheets="@style2.css">
                <HBox.margin>
-                  <Insets bottom="5.0" />
+                  <Insets right="20.0" />
                </HBox.margin>
             </TextField>
          </children>
       </HBox>
       <HBox prefHeight="40.0" prefWidth="200.0">
          <children>
-            <Label prefWidth="300.0" text="*Data" textFill="WHITE">
+            <Label prefWidth="300.0" text=" Data*" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="20.0" />
                </font>
@@ -53,70 +53,82 @@
                   <Insets top="5.0" />
                </HBox.margin>
             </Label>
-            <DatePicker fx:id="pdate" prefWidth="440.0">
+            <DatePicker fx:id="pdate" prefHeight="26.0" prefWidth="402.0">
                <HBox.margin>
-                  <Insets top="5.0" />
+                  <Insets right="20.0" top="5.0" />
                </HBox.margin>
             </DatePicker>
          </children>
       </HBox>
       <HBox prefHeight="40.0" prefWidth="200.0">
          <children>
-            <Label prefWidth="300.0" text="*Ora" textFill="WHITE">
+            <Label prefWidth="300.0" text=" Ora*" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="ftime" prefWidth="440.0" styleClass="text" stylesheets="@style2.css" />
-         </children>
-      </HBox>
-      <HBox prefHeight="40.0" prefWidth="200.0">
-         <children>
-            <Label prefWidth="300.0" text="*Cliente prenotante" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman" size="20.0" />
-               </font>
-            </Label>
-            <TextField fx:id="fbookingClient" prefWidth="440.0" styleClass="text" stylesheets="@style2.css" />
-         </children>
-      </HBox>
-      <HBox prefHeight="40.0" prefWidth="200.0">
-         <children>
-            <Label prefWidth="300.0" text="Cliente effettuante" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman" size="20.0" />
-               </font>
-            </Label>
-            <TextField fx:id="fperformingClient" prefWidth="440.0" styleClass="text" stylesheets="@style2.css" />
-         </children>
-      </HBox>
-      <HBox prefHeight="40.0" prefWidth="200.0">
-         <children>
-            <Label prefWidth="300.0" text="*Barbiere prenotante" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman" size="20.0" />
-               </font>
-            </Label>
-            <TextField fx:id="fbookingBarber" prefWidth="440.0" styleClass="text" stylesheets="@style2.css" />
-         </children>
-      </HBox>
-      <HBox prefHeight="40.0" prefWidth="200.0">
-         <children>
-            <Label prefWidth="300.0" text="Numero scontrino" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman" size="20.0" />
-               </font>
-            </Label>
-            <TextField fx:id="freceiptNumber" prefWidth="440.0" styleClass="text" stylesheets="@style2.css">
+            <TextField fx:id="ftime" prefHeight="40.0" prefWidth="399.0" styleClass="text" stylesheets="@style2.css">
                <HBox.margin>
-                  <Insets bottom="5.0" />
+                  <Insets right="20.0" />
+               </HBox.margin></TextField>
+         </children>
+      </HBox>
+      <HBox prefHeight="40.0" prefWidth="200.0">
+         <children>
+            <Label prefWidth="300.0" text=" Cliente prenotante*" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="fbookingClient" prefHeight="40.0" prefWidth="399.0" styleClass="text" stylesheets="@style2.css">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></TextField>
+         </children>
+      </HBox>
+      <HBox prefHeight="40.0" prefWidth="200.0">
+         <children>
+            <Label prefWidth="300.0" text=" Cliente effettuante" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="fperformingClient" prefHeight="40.0" prefWidth="400.0" styleClass="text" stylesheets="@style2.css">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></TextField>
+         </children>
+      </HBox>
+      <HBox prefHeight="40.0" prefWidth="200.0">
+         <children>
+            <Label prefWidth="300.0" text=" Barbiere prenotante*" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="fbookingBarber" prefHeight="40.0" prefWidth="398.0" styleClass="text" stylesheets="@style2.css">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></TextField>
+         </children>
+      </HBox>
+      <HBox prefHeight="40.0" prefWidth="200.0">
+         <children>
+            <Label prefWidth="300.0" text=" Numero scontrino" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="freceiptNumber" prefHeight="40.0" prefWidth="398.0" styleClass="text" stylesheets="@style2.css">
+               <HBox.margin>
+                  <Insets right="20.0" />
                </HBox.margin>
             </TextField>
          </children>
       </HBox>
       <HBox prefHeight="40.0" prefWidth="200.0">
          <children>
-            <Label prefWidth="300.0" text="Data scontrino" textFill="WHITE">
+            <Label prefWidth="300.0" text=" Data scontrino" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="20.0" />
                </font>
@@ -124,9 +136,9 @@
                   <Insets top="5.0" />
                </HBox.margin>
             </Label>
-            <DatePicker fx:id="preceiptDate" prefWidth="440.0">
+            <DatePicker fx:id="preceiptDate" prefHeight="26.0" prefWidth="398.0">
                <HBox.margin>
-                  <Insets top="5.0" />
+                  <Insets right="20.0" top="5.0" />
                </HBox.margin>
             </DatePicker>
          </children>

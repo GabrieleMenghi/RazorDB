@@ -2,7 +2,10 @@ package view;
 
 import db.ConnectionProvider;
 import db.tables.ClientsTable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -44,23 +47,14 @@ public class NewClientController {
 		} else {
 			Stage s2 = (Stage) save.getScene().getWindow();
 			Client c;
-			if(fphone.getText().isEmpty()) {
-				c = new Client(ffirstname.getText(), 
-								flastname.getText(), 
-								getOptional(faddress.getText()), 
-								getOptional(fcity.getText()), 
-								getOptional(fmail.getText()), 
-								null);
-				cTable.save(c);
-			} else {
-				c = new Client(ffirstname.getText(), 
-								flastname.getText(), 
-								getOptional(faddress.getText()), 
-								getOptional(fcity.getText()), 
-								getOptional(fmail.getText()), 
-								Long.decode(fphone.getText()));
-				cTable.save(c);
-			}
+			c = new Client(ffirstname.getText(), 
+							flastname.getText(), 
+							getString(faddress.getText()), 
+							getString(fcity.getText()), 
+							getString(fmail.getText()), 
+							getLong(fphone.getText()));
+			cTable.save(c);
+			
 			s2.close();
 		}
 	}
@@ -71,10 +65,17 @@ public class NewClientController {
 		s2.close();
 	}
 	
-	private String getOptional(String text){
+	private String getString(String text){
 		if(text.isEmpty()) {
 			return null;
 		}
 		return text;
+	}
+	
+	private Long getLong(String text){
+		if(text.isEmpty() || text == null) {
+			return null;
+		}
+		return Long.decode(text);
 	}
 }

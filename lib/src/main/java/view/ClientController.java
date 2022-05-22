@@ -30,6 +30,12 @@ public class ClientController implements Initializable{
 	
 	public void setCode(final Integer code) {
 		this.clientCode = code;
+		final ObservableList<ClientAppointment> data =
+		        FXCollections.observableArrayList();
+		aTable.findAll(clientCode).forEach(da -> {
+			data.add(da);
+		});
+		appointmentsTable.setItems(data);
 	}
 	
    /* *************** *
@@ -59,7 +65,7 @@ final static ClientAppointmentsTable aTable = new ClientAppointmentsTable(connec
 		aTable.findAll(clientCode).forEach(da -> {
 			data.add(da);
 		});
-		appointmentsTable.setItems(data);
+		appointmentsTable.getItems().setAll(data);
 	}
 	
 	

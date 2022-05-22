@@ -4,11 +4,8 @@ import db.ConnectionProvider;
 import db.tables.ClientsTable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.Client;
-import model.Fidelity;
 
 public class ClientDetailsController {
 	@FXML
@@ -24,16 +21,6 @@ public class ClientDetailsController {
     
     final static ConnectionProvider connectionProvider = new ConnectionProvider(username, password, dbName);
     final static ClientsTable cTable = new ClientsTable(connectionProvider.getMySQLConnection());
-	
-	private Integer id;
-    private String firstName;
-	private String lastName;
-	private String address;
-	private String city;
-	private String mail;
-	private Long phone;
-	private Integer fidelityNumber;
-	private Integer balance;
 	
 	@FXML
 	TextField ffirstname;
@@ -54,20 +41,6 @@ public class ClientDetailsController {
 
 	public void link(Integer id, String firstName, String lastName, String address, String city, String mail,
 						Long phone, Integer fidelityNumber, Integer balance) {
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.city = city;
-		this.mail = mail;
-		this.phone = phone;
-		this.fidelityNumber = fidelityNumber;
-		this.balance = balance;
-	}
-
-
-	@FXML
-	public void init() {
 		if(address == null) {
 			faddress.setText("");
 		} else {

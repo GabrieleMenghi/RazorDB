@@ -13,91 +13,111 @@
       <HBox prefHeight="25.0" prefWidth="500.0" />
       <HBox prefHeight="50.0" prefWidth="500.0">
          <children>
-            <Label prefHeight="23.0" prefWidth="215.0" text="Nome" textFill="WHITE">
+            <Label prefHeight="23.0" prefWidth="215.0" text=" Nome" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="ffirstname" editable="false" prefHeight="40.0" prefWidth="439.0" styleClass="text" stylesheets="@style2.css" />
-         </children>
-      </HBox>
-      <HBox prefHeight="50.0" prefWidth="500.0">
-         <children>
-            <Label prefHeight="23.0" prefWidth="220.0" text="Cognome" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman" size="20.0" />
-               </font>
-            </Label>
-            <TextField fx:id="flastname" editable="false" prefHeight="40.0" prefWidth="444.0" styleClass="text" stylesheets="@style2.css" />
-         </children>
-      </HBox>
-      <HBox prefHeight="50.0" prefWidth="500.0">
-         <children>
-            <Label prefHeight="23.0" prefWidth="247.0" text="Via" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman" size="20.0" />
-               </font>
-            </Label>
-            <TextField fx:id="faddress" editable="false" prefHeight="40.0" prefWidth="471.0" styleClass="text" stylesheets="@style2.css" />
-         </children>
-      </HBox>
-      <HBox prefHeight="50.0" prefWidth="500.0">
-         <children>
-            <Label prefHeight="23.0" prefWidth="234.0" text="Città" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman" size="20.0" />
-               </font>
-            </Label>
-            <TextField fx:id="fcity" editable="false" prefHeight="40.0" prefWidth="459.0" styleClass="text" stylesheets="@style2.css" />
-         </children>
-      </HBox>
-      <HBox prefHeight="50.0" prefWidth="500.0">
-         <children>
-            <Label prefHeight="23.0" prefWidth="246.0" text="Mail" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman" size="20.0" />
-               </font>
-            </Label>
-            <TextField fx:id="fmail" editable="false" prefHeight="40.0" prefWidth="468.0" styleClass="text" stylesheets="@style2.css">
+            <TextField fx:id="ffirstname" editable="false" prefHeight="40.0" prefWidth="387.0" styleClass="text" stylesheets="@style2.css">
                <HBox.margin>
-                  <Insets />
+                  <Insets right="20.0" />
+               </HBox.margin></TextField>
+         </children>
+      </HBox>
+      <HBox prefHeight="50.0" prefWidth="500.0">
+         <children>
+            <Label prefHeight="23.0" prefWidth="220.0" text=" Cognome" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="flastname" editable="false" prefHeight="40.0" prefWidth="393.0" styleClass="text" stylesheets="@style2.css">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></TextField>
+         </children>
+      </HBox>
+      <HBox prefHeight="50.0" prefWidth="500.0">
+         <children>
+            <Label prefHeight="23.0" prefWidth="247.0" text=" Via" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="faddress" editable="false" prefHeight="40.0" prefWidth="419.0" styleClass="text" stylesheets="@style2.css">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></TextField>
+         </children>
+      </HBox>
+      <HBox prefHeight="50.0" prefWidth="500.0">
+         <children>
+            <Label prefHeight="23.0" prefWidth="234.0" text=" Città" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="fcity" editable="false" prefHeight="40.0" prefWidth="409.0" styleClass="text" stylesheets="@style2.css">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></TextField>
+         </children>
+      </HBox>
+      <HBox prefHeight="50.0" prefWidth="500.0">
+         <children>
+            <Label prefHeight="23.0" prefWidth="246.0" text=" Mail" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="fmail" editable="false" prefHeight="40.0" prefWidth="423.0" styleClass="text" stylesheets="@style2.css">
+               <HBox.margin>
+                  <Insets right="20.0" />
                </HBox.margin>
             </TextField>
          </children>
       </HBox>
       <HBox prefHeight="50.0" prefWidth="500.0">
          <children>
-            <Label prefHeight="23.0" prefWidth="205.0" text="Telefono" textFill="WHITE">
+            <Label prefHeight="23.0" prefWidth="205.0" text=" Telefono" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="fphone" editable="false" prefHeight="40.0" prefWidth="429.0" styleClass="text" stylesheets="@style2.css" />
+            <TextField fx:id="fphone" editable="false" prefHeight="40.0" prefWidth="384.0" styleClass="text" stylesheets="@style2.css">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></TextField>
          </children>
       </HBox>
       <HBox prefHeight="50.0" prefWidth="500.0">
          <children>
-            <Label prefWidth="150.0" text="Numero fidelity" textFill="WHITE">
+            <Label prefWidth="150.0" text=" Numero fidelity" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="ffidelitynumber" editable="false" prefHeight="40.0" prefWidth="372.0" styleClass="text" stylesheets="@style2.css" />
+            <TextField fx:id="ffidelitynumber" editable="false" prefHeight="40.0" prefWidth="330.0" styleClass="text" stylesheets="@style2.css">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></TextField>
          </children>
       </HBox>
       <HBox prefHeight="50.0" prefWidth="500.0">
          <children>
-            <Label prefHeight="23.0" prefWidth="186.0" text="Saldo punti" textFill="WHITE">
+            <Label prefHeight="23.0" prefWidth="186.0" text=" Saldo punti" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="fbalance" editable="false" prefHeight="40.0" prefWidth="408.0" styleClass="text" stylesheets="@style2.css" />
+            <TextField fx:id="fbalance" editable="false" prefHeight="40.0" prefWidth="365.0" styleClass="text" stylesheets="@style2.css">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></TextField>
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="155.0" prefWidth="500.0">
          <children>
-            <Button fx:id="viewAll" mnemonicParsing="false" onMouseClicked="#init" stylesheets="@style2.css" text="Visualizza" />
             <Button fx:id="close" mnemonicParsing="false" onMouseClicked="#closeStage" stylesheets="@style2.css" text="Chiudi">
                <HBox.margin>
                   <Insets left="35.0" right="35.0" />

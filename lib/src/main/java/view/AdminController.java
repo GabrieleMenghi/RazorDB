@@ -82,7 +82,7 @@ public class AdminController implements Initializable{
 		cTable.findAll().forEach(c -> {
 			data.add(c);
 		});
-		clientsTable.setItems(data);
+		clientsTable.getItems().setAll(data);
 	}
 	
 	@FXML
@@ -94,6 +94,9 @@ public class AdminController implements Initializable{
 			data.add(c);
 		});
 		clientsTable.getItems().setAll(data);
+	}
+	public void print() {
+		System.out.println("ciao");
 	}
 
 	@FXML

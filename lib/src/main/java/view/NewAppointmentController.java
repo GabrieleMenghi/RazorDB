@@ -2,7 +2,6 @@ package view;
 
 import java.sql.Time;
 import java.util.Date;
-import java.util.Optional;
 import db.ConnectionProvider;
 import db.tables.AppointmentsTable;
 import javafx.fxml.FXML;
@@ -45,7 +44,6 @@ public class NewAppointmentController {
 	@FXML
 	Label error;
 	
-	@SuppressWarnings("deprecation")
 	@FXML
 	public void saveAppointment() {
 		boolean err1 = false;
