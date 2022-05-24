@@ -174,10 +174,39 @@ public class ClientsTable {
     			c = new Client(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
     							rs.getString(5), rs.getString(6), rs.getLong(7));
     		}
-    		//System.out.println(c);
     		return c;
     	} catch (final Exception e) {
     		return null;
     	}
+    }
+    
+    public boolean addFidelityById(final Integer id, final Integer balance) {
+    	final String query = "INSERT INTO fidelity (SaldoPunti, CodCliente)"
+    							+ " VALUES (?,?)";
+        try (final PreparedStatement statement = this.connection.prepareStatement(query)) {
+            statement.setInt(1, balance);
+            statement.setInt(2, id);
+            statement.executeUpdate();
+            return true;
+        } catch (final SQLIntegrityConstraintViolationException e) {
+            return false;
+        } catch (final SQLException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+    
+    public boolean addAppointmentById(final Integer id) {
+    	final String query = "INSERT INTO " + TABLE_NAME + "(id, firstName, lastName, birthday) VALUES (?,?,?,?)";
+        try (final PreparedStatement statement = this.connection.prepareStatement(query)) {
+            statement.setInt(1, id); //change
+            statement.setString(2, "id"); //change
+            statement.setString(3, "id"); //change
+            statement.executeUpdate();
+            return true;
+        } catch (final SQLIntegrityConstraintViolationException e) {
+            return false;
+        } catch (final SQLException e) {
+            throw new IllegalStateException(e);
+        }
     }
 }

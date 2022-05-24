@@ -118,7 +118,7 @@ public class AdminController implements Initializable{
 	public void deleteClient() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		int id = clientsTable.getSelectionModel().getSelectedItem().getId();
-		alert.setTitle("Conferma");
+		alert.setTitle("Rimozione utente");
 		String s = "Sei sicuro di voler eliminare l'utente " + id + "?";
 		alert.setContentText(s);
 		 
@@ -245,6 +245,14 @@ public class AdminController implements Initializable{
 				data.add(c);
 			});
 			clientsTable.getItems().setAll(data);
+		}
+	}
+	
+	@FXML
+	public void newFidelity() {
+		Integer res = BalanceBox.display("Nuova fidelity", "Inserire saldo punti iniziale");
+		if(!(res == null)) {
+			cTable.addFidelityById(clientsTable.getSelectionModel().getSelectedItem().getId(), res);
 		}
 	}
 	
