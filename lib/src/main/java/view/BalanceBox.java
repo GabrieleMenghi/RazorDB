@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -22,6 +23,7 @@ public class BalanceBox {
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setTitle(title);
 		window.setMinWidth(250);
+		window.getIcons().add(new Image("images/logoRazor.jpg"));
 		Label label = new Label();
 		label.setText(description);
 		Label err = new Label();
@@ -51,8 +53,8 @@ public class BalanceBox {
 		});
 		
 		close.setOnAction(e -> {
-			window.close();
 			res = null;
+			window.close();
 		});
 		
 		VBox box = new VBox(10);

@@ -256,6 +256,14 @@ public class AdminController implements Initializable{
 		}
 	}
 	
+	@FXML
+	public void newAppointment() {
+		Appointment res = AppointmentBox.display("Nuovo appuntamento");
+		if(!(res == null)) {
+			cTable.addAppointmentById(clientsTable.getSelectionModel().getSelectedItem().getId(), res);
+		}
+	}
+	
 	/* *************** *
      *   APPUNTAMENTI  *
      * *************** */

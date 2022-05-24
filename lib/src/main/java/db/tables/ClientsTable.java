@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import model.Appointment;
 import model.Client;
 import model.Fidelity;
 
@@ -195,12 +196,19 @@ public class ClientsTable {
         }
     }
     
-    public boolean addAppointmentById(final Integer id) {
-    	final String query = "INSERT INTO " + TABLE_NAME + "(id, firstName, lastName, birthday) VALUES (?,?,?,?)";
+    public boolean addAppointmentById(final Integer id, final Appointment appointment) {
+    	final String query = "INSERT INTO appuntamenti"
+    							+ " (BarbiereEffettuante, Data, Ora, ClientePrenotante, ClienteEffettuante, BarbierePrenotante, NumScontrino, DataScontrino)"
+    							+ " VALUES (?,?,?,?,?,?,?,?)";
         try (final PreparedStatement statement = this.connection.prepareStatement(query)) {
-            statement.setInt(1, id); //change
-            statement.setString(2, "id"); //change
-            statement.setString(3, "id"); //change
+            statement.setInt(1, appointment.getIdPerformingBarber());
+            statement.setDate(2, appointment.getDate());
+            statement.setTime(3, appointment.getTime());
+            statement.setInt(4, id);
+            statement.setObject(5, appointment.getIdPerformingClient(), Types.INTEGER);
+            statement.setInt(6, appointment.getIdBookingBarber());
+            statement.setObject(7, appointment.getReceiptNumber(), Types.INTEGER);
+            statement.setObject(8, appointment.getReceiptDate(), Types.DATE);
             statement.executeUpdate();
             return true;
         } catch (final SQLIntegrityConstraintViolationException e) {
