@@ -2,7 +2,6 @@ package view;
 
 import java.sql.Time;
 import java.util.Date;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Pos;
@@ -11,10 +10,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Appointment;
@@ -28,13 +28,12 @@ public class AppointmentBox {
 		Stage window = new Stage();
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setTitle(title);
-		window.setMinWidth(350);
-		window.setMinHeight(300);
 		window.getIcons().add(new Image("images/logoRazor.jpg"));
 		Label fields = new Label();
 		fields.setText("* = campo obbligatorio");
+		fields.getStyleClass().add("labels");
 		Label err = new Label();
-		err.setTextFill(Color.RED);
+		err.getStyleClass().add("error");
 		
 		//Barbiere prenotante
 		TextField fbookingbarber = new TextField();
@@ -49,16 +48,20 @@ public class AppointmentBox {
             }
         });
 		Label lbookingbarber = new Label("Barbiere prenotante*");
+		lbookingbarber.getStyleClass().add("labels");
 		HBox hbookingbarber = new HBox(10);
 		hbookingbarber.getChildren().addAll(lbookingbarber, fbookingbarber);
 		//Data
 		DatePicker date = new DatePicker();
 		Label ldate = new Label("Data*");
+		ldate.getStyleClass().add("labels");
 		HBox hdate = new HBox(10);
 		hdate.getChildren().addAll(ldate, date);
 		//Ora
 		TextField ftime = new TextField();
-		Label ltime = new Label("Ora*");
+		//ftime.setTextFormatter(new TextFormatter(null));
+		Label ltime = new Label("Ora* (HH:MM:SS)");
+		ltime.getStyleClass().add("labels");
 		HBox htime = new HBox(10);
 		htime.getChildren().addAll(ltime, ftime);
 		//Barbiere effettuante
@@ -74,6 +77,7 @@ public class AppointmentBox {
             }
         });
 		Label lperformingbarber = new Label("Barbiere effettuante*");
+		lperformingbarber.getStyleClass().add("labels");
 		HBox hperformingbarber = new HBox(10);
 		hperformingbarber.getChildren().addAll(lperformingbarber, fperformingbarber);
 		
@@ -109,7 +113,10 @@ public class AppointmentBox {
 		hbox.setAlignment(Pos.CENTER);
 		box.getChildren().addAll(fields, err, hbookingbarber, hdate, htime, hperformingbarber, hbox);
 		box.setAlignment(Pos.CENTER);
+		box.setMinWidth(350);
+		box.setMinHeight(300);
 		Scene scene = new Scene(box);
+		scene.getStylesheets().add(AppointmentBox.class.getResource("style3.css").toExternalForm());
 		window.setScene(scene);
 		window.showAndWait();
 		return res;

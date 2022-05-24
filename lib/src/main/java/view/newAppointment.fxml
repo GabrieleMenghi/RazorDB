@@ -62,7 +62,7 @@
       </HBox>
       <HBox prefHeight="40.0" prefWidth="200.0">
          <children>
-            <Label prefWidth="300.0" text=" Ora*" textFill="WHITE">
+            <Label prefWidth="300.0" text=" Ora* (HH:MM:SS)" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="20.0" />
                </font>

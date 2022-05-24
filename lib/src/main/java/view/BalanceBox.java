@@ -22,12 +22,14 @@ public class BalanceBox {
 		Stage window = new Stage();
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setTitle(title);
-		window.setMinWidth(250);
 		window.getIcons().add(new Image("images/logoRazor.jpg"));
 		Label label = new Label();
 		label.setText(description);
+		label.setTextFill(Color.WHITE);
+		label.getStyleClass().add("labels");
 		Label err = new Label();
 		err.setTextFill(Color.RED);
+		err.getStyleClass().add("error");
 		
 		TextField tf = new TextField();
 		tf.textProperty().addListener(new ChangeListener<String>() {
@@ -63,7 +65,9 @@ public class BalanceBox {
 		hbox.setAlignment(Pos.CENTER);
 		box.getChildren().addAll(label, err, tf, hbox);
 		box.setAlignment(Pos.CENTER);
+		box.setMinWidth(250);
 		Scene scene = new Scene(box);
+		scene.getStylesheets().add(BalanceBox.class.getResource("style3.css").toExternalForm());
 		window.setScene(scene);
 		window.showAndWait();
 		return res;
