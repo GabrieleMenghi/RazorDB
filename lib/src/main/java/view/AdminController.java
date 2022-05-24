@@ -72,6 +72,8 @@ public class AdminController implements Initializable{
 	
 	@FXML
 	TextField nameSearch;
+	@FXML
+	TextField faverage;
 	
 	
 	
@@ -261,6 +263,25 @@ public class AdminController implements Initializable{
 		Appointment res = AppointmentBox.display("Nuovo appuntamento");
 		if(!(res == null)) {
 			cTable.addAppointmentById(clientsTable.getSelectionModel().getSelectedItem().getId(), res);
+		}
+	}
+	
+	@FXML
+	public void clientsOverAverage() {
+		Double average = null;
+		try {
+			average = Double.parseDouble(faverage.getText());
+		} catch (Exception e) {
+			average = null;
+		}
+		if(!(average == null)) {
+			clientsTable.refresh();
+			final ObservableList<Client> data =
+					FXCollections.observableArrayList();
+			cTable.viewClientsOverAverage(average).forEach(c -> {
+				data.add(c);
+			});
+			clientsTable.getItems().setAll(data);
 		}
 	}
 	

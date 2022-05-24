@@ -23,6 +23,7 @@ public class BalanceBox {
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setTitle(title);
 		window.getIcons().add(new Image("images/logoRazor.jpg"));
+		window.setResizable(false);
 		Label label = new Label();
 		label.setText(description);
 		label.setTextFill(Color.WHITE);

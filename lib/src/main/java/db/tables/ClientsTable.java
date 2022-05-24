@@ -217,4 +217,18 @@ public class ClientsTable {
             throw new IllegalStateException(e);
         }
     }
+    
+    public List<Client> viewClientsOverAverage(final Double average){
+    	String query = "SELECT c.* FROM " + TABLE_NAME
+    					+ " c JOIN scontrini s ON (c.CodCliente = s.CodCliente)"
+    					+ " GROUP BY c.CodCliente"
+    					+ " HAVING ? <= avg(ImportoTotale)";
+    	try(PreparedStatement st = this.connection.prepareStatement(query)){
+    		st.setDouble(1, average);
+    		ResultSet rs = st.executeQuery();
+    		return readClientsFromResultSet(rs);
+    	} catch (SQLException e) {
+    		throw new IllegalStateException(e);
+    	}
+    }
 }
