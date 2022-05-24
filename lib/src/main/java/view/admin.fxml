@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -45,26 +47,6 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <FontAwesomeIcon fill="WHITE" glyphName="TRASH" onMouseClicked="#deleteClient" size="40" />
-                                    <Label onMouseClicked="#deleteClient" text="Rimuovi cliente" textFill="WHITE">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <FontAwesomeIcon fill="WHITE" glyphName="EDIT" onMouseClicked="#updateClient" size="40" />
-                                    <Label onMouseClicked="#updateClient" text="Modifica cliente" textFill="WHITE">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                 <children>
                                     <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" onMouseClicked="#searchClientByName" size="40" />
                                     <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="146.0">
                                        <children>
@@ -76,16 +58,6 @@
                                           <TextField fx:id="nameSearch" />
                                        </children>
                                     </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <FontAwesomeIcon fill="WHITE" glyphName="EYE" onMouseClicked="#viewDetails" size="40" />
-                                    <Label onMouseClicked="#viewDetails" text="Vedi dettagli" textFill="WHITE">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
                                  </children>
                               </HBox>
                            </children>
@@ -102,6 +74,15 @@
                         <TableColumn fx:id="c_c_mail" prefWidth="99.0" text="MAIL" />
                         <TableColumn fx:id="c_c_phone" prefWidth="105.0" text="TELEFONO" />
                     </columns>
+                     <contextMenu>
+                        <ContextMenu>
+                           <items>
+                              <MenuItem mnemonicParsing="false" onMenuValidation="#deleteClient" text="Rimuovi" />
+                              <MenuItem mnemonicParsing="false" onMenuValidation="#viewDetails" text="Vedi dettagli" />
+                              <MenuItem mnemonicParsing="false" onMenuValidation="#updateClient" text="Modifica" />
+                           </items>
+                        </ContextMenu>
+                     </contextMenu>
                   </TableView>
                </children>
             </AnchorPane>

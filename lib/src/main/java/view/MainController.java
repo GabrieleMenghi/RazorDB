@@ -4,6 +4,7 @@ import java.io.IOException;
 import db.ConnectionProvider;
 import db.tables.ClientsTable;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +16,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.KeyCode;
 
 public class MainController {
 	
@@ -105,5 +108,30 @@ public class MainController {
 			clientLabel.setText("Inserire un codice valido");
 		}
 	}
-
+	
+	public void enterAdmin() {
+		adminPassword.setOnKeyPressed(new EventHandler<KeyEvent>() {
+	        @Override
+	        public void handle(KeyEvent k) {
+	            if (k.getCode().equals(KeyCode.ENTER)) {
+	                try {
+						adminAccess(null);
+					} catch (IOException e) {}
+	            }
+	        }
+		});
+	}
+	
+	public void enterClient() {
+		clientCode.setOnKeyPressed(new EventHandler<KeyEvent>() {
+	        @Override
+	        public void handle(KeyEvent k) {
+	            if (k.getCode().equals(KeyCode.ENTER)) {
+	                try {
+						clientAccess(null);
+					} catch (IOException e) {}
+	            }
+	        }
+		});
+	}
 }
