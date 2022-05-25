@@ -16,7 +16,7 @@
 	-fx-border-color: #999999;
 }
 
-.text-field {
+.textfield {
 	-fx-background-color: transparent;
 	-fx-font-size: 17;
 	-fx-border-width: 0px 0px 2px 0px;
@@ -32,4 +32,9 @@
 .error{
 	-fx-text-fill: red;
 	-fx-font-size: 13;
+}
+
+.datetext{
+	-fx-text-fill: black;
+	-fx-font-size: 15;
 }

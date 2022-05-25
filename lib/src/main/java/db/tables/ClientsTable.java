@@ -137,8 +137,7 @@ public class ClientsTable {
     		return cs.executeUpdate() > 0;
     	} catch (SQLException e) {
     		return false;
-    	}
-    			
+    	}		
     }
     
     public boolean updateFidelity(final Fidelity fidelity) {

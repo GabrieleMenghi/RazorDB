@@ -105,6 +105,9 @@
                            </items>
                         </ContextMenu>
                      </contextMenu>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
                </children>
             </AnchorPane>
@@ -172,29 +175,10 @@
                                     </Label>
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <FontAwesomeIcon fill="WHITE" glyphName="EDIT" size="40" />
-                                    <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="139.0">
-                                       <children>
-                                          <Label text="Modifica" textFill="WHITE">
-                                             <font>
-                                                <Font size="18.0" />
-                                             </font>
-                                          </Label>
-                                          <Label text="Appuntamento" textFill="WHITE">
-                                             <font>
-                                                <Font size="18.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
                            </children></VBox>
                      </children>
                   </AnchorPane>
-                  <TableView fx:id="appointmentsTable" layoutX="301.0" layoutY="25.0" prefHeight="550.0" prefWidth="450.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
+                  <TableView fx:id="appointmentsTable" layoutX="301.0" layoutY="25.0" prefHeight="550.0" prefWidth="450.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
                     <columns>
                       <TableColumn fx:id="c_a_date" prefWidth="113.0" text="DATA" />
                       <TableColumn fx:id="c_a_time" prefWidth="105.0" text="ORA" />
@@ -202,6 +186,16 @@
                         <TableColumn fx:id="c_a_clientfirstname" prefWidth="114.0" text="NOME CLIENTE" />
                         <TableColumn fx:id="c_a_clientlastname" prefWidth="133.0" text="COGNOME CLIENTE" />
                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                     <contextMenu>
+                        <ContextMenu>
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#updateAppointment" text="Modifica" />
+                          </items>
+                        </ContextMenu>
+                     </contextMenu>
                   </TableView>
                </children>
             </AnchorPane>
@@ -221,6 +215,9 @@
                         <TableColumn fx:id="c_b_type" prefWidth="51.0" text="TIPO" />
                         <TableColumn fx:id="c_b_piva" prefWidth="182.0" text="PARTITA IVA" />
                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
                </children>
             </AnchorPane>
@@ -239,6 +236,33 @@
                         <TableColumn fx:id="c_r_barber" prefWidth="138.0" text="BARBIERE" />
                         <TableColumn fx:id="c_r_client" prefWidth="144.0" text="CLIENTE" />
                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="SERVIZI">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: black;">
+               <children>
+                  <VBox layoutX="21.0" layoutY="41.0" prefHeight="600.0" prefWidth="174.0" style="-fx-background-color: #5f5f5f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <TableView fx:id="servicesTable" layoutX="385.0" layoutY="128.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="199.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+                    <columns>
+                      <TableColumn fx:id="ser_c_name" prefWidth="58.0" text="ID" />
+                      <TableColumn fx:id="ser_c_description" prefWidth="86.0" text="DESCRIZIONE" />
+                        <TableColumn fx:id="ser_c_price" prefWidth="60.0" text="PREZZO" />
+                        <TableColumn fx:id="ser_c_duration" prefWidth="84.0" text="DURATA" />
+                        <TableColumn fx:id="ser_c_req1" prefWidth="77.0" text="RICHIESTE 1" />
+                        <TableColumn fx:id="ser_c_req2" prefWidth="85.0" text="RICHIESTE 2" />
+                        <TableColumn fx:id="ser_req3" prefWidth="81.0" text="RICHIESTE 3" />
+                        <TableColumn fx:id="ser_req4" prefWidth="89.0" text="RICHIESTE 4" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
                </children>
             </AnchorPane>

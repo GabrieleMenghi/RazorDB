@@ -37,6 +37,7 @@ public class AppointmentBox {
 		
 		//Barbiere prenotante
 		TextField fbookingbarber = new TextField();
+		fbookingbarber.getStyleClass().add("textfield");
 		fbookingbarber.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(
@@ -55,6 +56,7 @@ public class AppointmentBox {
 		
 		//Data
 		DatePicker date = new DatePicker();
+		date.getStyleClass().add("datetext");
 		Label ldate = new Label(" Data*");
 		ldate.getStyleClass().add("labels");
 		HBox hdate = new HBox(10);
@@ -63,6 +65,7 @@ public class AppointmentBox {
 		
 		//Ora
 		TextField ftime = new TextField();
+		ftime.getStyleClass().add("textfield");
 		Label ltime = new Label(" Ora* (HH:MM:SS)");
 		ltime.getStyleClass().add("labels");
 		HBox htime = new HBox(10);
@@ -71,6 +74,7 @@ public class AppointmentBox {
 		
 		//Barbiere effettuante
 		TextField fperformingbarber = new TextField();
+		fperformingbarber.getStyleClass().add("textfield");
 		fperformingbarber.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(

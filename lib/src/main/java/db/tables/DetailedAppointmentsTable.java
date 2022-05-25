@@ -24,10 +24,11 @@ public class DetailedAppointmentsTable {
     	try {											
     		while(rs.next()) {
 				 appointments.add(new DetailedAppointment(rs.getDate(1), 
-						 									rs.getTime(2), 
-						 									rs.getInt(3), 
-						 									rs.getString(4), 
-						 									rs.getString(5)));
+						 									rs.getTime(2),
+						 									rs.getInt(3),
+						 									rs.getInt(4), 
+						 									rs.getString(5), 
+						 									rs.getString(6)));
     		}
     	} catch (final SQLException e) {
     		throw new IllegalStateException();
@@ -37,7 +38,7 @@ public class DetailedAppointmentsTable {
     
     public List<DetailedAppointment> findAll() {
     	try(final Statement statement = this.connection.createStatement()){
-    		final ResultSet rs = statement.executeQuery("SELECT a.Data, a.Ora, a.ClientePrenotante, c.Nome, c.Cognome FROM"
+    		final ResultSet rs = statement.executeQuery("SELECT a.Data, a.Ora, a.BarbiereEffettuante, a.ClientePrenotante, c.Nome, c.Cognome FROM"
     													+ " appuntamenti a, clienti c"
     													+ " WHERE a.ClientePrenotante = c.CodCliente");  
     		return readAppFromResultset(rs);

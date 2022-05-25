@@ -1,5 +1,6 @@
 package db.tables;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -7,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,5 +76,19 @@ public class AppointmentsTable {
         } catch (final SQLException e) {
             throw new IllegalStateException(e);
         }
+    }
+    
+    public boolean updateAppointment(final Integer barber, final Date oldDate, final Time oldTime, final Date newDate, final Time newTime) {
+    	String query = "{call updateAppointment (?,?,?,?,?)}";
+    	try(CallableStatement cs = this.connection.prepareCall(query)){
+    		cs.setInt(1, barber);
+    		cs.setDate(2, oldDate);
+    		cs.setTime(3, oldTime);
+    		cs.setDate(4, newDate);
+    		cs.setTime(5, newTime);
+    		return cs.executeUpdate() > 0;
+    	} catch (SQLException e) {
+    		return false;
+    	}		
     }
 }

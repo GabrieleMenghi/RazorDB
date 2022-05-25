@@ -1,12 +1,18 @@
 package view;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import db.ConnectionProvider;
 import db.tables.ClientsTable;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,7 +25,7 @@ import javafx.stage.Stage;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
 
-public class MainController {
+public class MainController implements Initializable{
 	
 	final static String username = "root";
     final static String password = "";
@@ -133,5 +139,19 @@ public class MainController {
 	            }
 	        }
 		});
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		clientCode.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(
+                    ObservableValue<? extends String> observable,
+                    String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    clientCode.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });		
 	}
 }

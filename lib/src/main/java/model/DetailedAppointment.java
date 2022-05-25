@@ -8,13 +8,15 @@ public class DetailedAppointment {
 	
 	private Date date;
 	private Time time;
+	private Integer idPerformingBarber;
 	private Integer idClient;
 	private String clientFirstName;
 	private String clientLastName;
 	
-	public DetailedAppointment(Date date, Time time, Integer idClient, String clientFirstName, String clientLastName) {
+	public DetailedAppointment(Date date, Time time, Integer idPerformingBarber, Integer idClient, String clientFirstName, String clientLastName) {
 		this.date = Objects.requireNonNull(date);
 		this.time = Objects.requireNonNull(time);
+		this.idPerformingBarber = Objects.requireNonNull(idPerformingBarber);
 		this.idClient = Objects.requireNonNull(idClient);
 		this.clientFirstName = Objects.requireNonNull(clientFirstName);
 		this.clientLastName = Objects.requireNonNull(clientLastName);
@@ -27,7 +29,11 @@ public class DetailedAppointment {
 	public Time getTime() {
 		return time;
 	}
-
+	
+	public Integer getIdBarber() {
+		return idPerformingBarber;
+	}
+	
 	public Integer getIdClient() {
 		return idClient;
 	}

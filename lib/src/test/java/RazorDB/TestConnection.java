@@ -89,4 +89,9 @@ public class TestConnection {
 		//assertTrue(cTable.updateClient(ctest));
 		System.out.println(cTable.findClientById(1));
 	}
+	
+	/*@Test
+	public void testUpdateApp() {
+		assertTrue(aTable.updateAppointment(1, Date.valueOf("2022-06-01"), Time.valueOf("09:30:00"), Date.valueOf("2022-06-01"), Time.valueOf("09:00:00")));
+	}*/
 }

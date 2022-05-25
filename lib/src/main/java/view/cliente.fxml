@@ -41,6 +41,9 @@
                         <TableColumn fx:id="c_a_receiptnumber" prefWidth="132.0" text="NUMERO SCONTRINO" />
                         <TableColumn fx:id="c_a_receiptdate" prefWidth="117.0" text="DATA SCONTRINO" />
                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
                </children></AnchorPane>
       </content>

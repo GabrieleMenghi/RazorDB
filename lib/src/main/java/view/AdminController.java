@@ -3,6 +3,7 @@ package view;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Optional;
@@ -14,6 +15,7 @@ import db.tables.BarbersTable;
 import db.tables.ClientsTable;
 import db.tables.DetailedAppointmentsTable;
 import db.tables.ReceiptsTable;
+import db.tables.ServicesTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -37,6 +39,8 @@ import model.Barber;
 import model.Client;
 import model.DetailedAppointment;
 import model.Receipt;
+import model.Service;
+import utils.Pair;
 import utils.Utils;
 
 public class AdminController implements Initializable{
@@ -289,6 +293,7 @@ public class AdminController implements Initializable{
      *   APPUNTAMENTI  *
      * *************** */
 	final static DetailedAppointmentsTable daTable = new DetailedAppointmentsTable(connectionProvider.getMySQLConnection());
+	final static AppointmentsTable aTable = new AppointmentsTable(connectionProvider.getMySQLConnection());
 	
 	@FXML
 	TableView<DetailedAppointment> appointmentsTable;
@@ -359,6 +364,15 @@ public class AdminController implements Initializable{
 		stage.show();
 	}
 	
+	@FXML
+	public void updateAppointment() {
+		DetailedAppointment old = appointmentsTable.getSelectionModel().getSelectedItem();
+		Pair<java.sql.Date, Time> res = UpdateAppointmentBox.display("Aggiorna appuntamento", old.getTime().toString());
+		if(!(res == null)) {
+			aTable.updateAppointment(old.getIdBarber(), old.getDate(), old.getTime(), res.getA(), res.getB());
+		}
+	}
+	
 	/* ********** *
      *  BARBIERI  *
      * ********** */
@@ -425,6 +439,43 @@ public class AdminController implements Initializable{
 		receiptsTable.setItems(data);
 	}
 	
+	/* ********** *
+     *   SERVIZI  *
+     * ********** */
+    final static ServicesTable serTable = new ServicesTable(connectionProvider.getMySQLConnection());
+	
+	@FXML
+	TableView<Service> servicesTable;
+	
+	@FXML
+	TableColumn<Service, String> ser_c_name;
+	@FXML
+	TableColumn<Service, String> ser_c_description;
+	@FXML
+	TableColumn<Service, String> ser_c_price;
+	@FXML
+	TableColumn<Service, String> ser_c_duration;
+	@FXML
+	TableColumn<Service, String> ser_c_req1;
+	@FXML
+	TableColumn<Service, String> ser_c_req2;
+	@FXML
+	TableColumn<Service, String> ser_req3;
+	@FXML
+	TableColumn<Service, String> ser_req4;
+	
+	
+	
+	@FXML
+	public void viewServices() {
+		final ObservableList<Service> data =
+		        FXCollections.observableArrayList();
+		serTable.findAll().forEach(s -> {
+			data.add(s);
+		});
+		servicesTable.getItems().setAll(data);
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		//CLIENTI
@@ -463,5 +514,16 @@ public class AdminController implements Initializable{
 		c_r_total.setCellValueFactory(new PropertyValueFactory<>("total"));
 		c_r_barber.setCellValueFactory(new PropertyValueFactory<>("idBarber"));
 		c_r_client.setCellValueFactory(new PropertyValueFactory<>("idClient"));
+		
+		//CLIENTI
+		viewServices();
+		ser_c_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+		ser_c_description.setCellValueFactory(new PropertyValueFactory<>("description"));
+		ser_c_price.setCellValueFactory(new PropertyValueFactory<>("price"));
+		ser_c_duration.setCellValueFactory(new PropertyValueFactory<>("duration"));
+		ser_c_req1.setCellValueFactory(new PropertyValueFactory<>("requests1"));
+		ser_c_req2.setCellValueFactory(new PropertyValueFactory<>("requests2"));
+		ser_req3.setCellValueFactory(new PropertyValueFactory<>("requests3"));
+		ser_req4.setCellValueFactory(new PropertyValueFactory<>("requests4"));
 	}
 }
