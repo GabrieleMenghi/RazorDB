@@ -19,3 +19,11 @@
 	-fx-text-fill: #999999;
 	-fx-border-color: #999999;
 }
+
+.fields {
+	-fx-background-color: transparent;
+	-fx-font-size: 15;
+	-fx-border-width: 0px 0px 2px 0px;
+	-fx-text-fill: white;
+	-fx-border-color: white;
+}

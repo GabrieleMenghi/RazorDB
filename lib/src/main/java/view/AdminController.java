@@ -288,7 +288,7 @@ public class AdminController implements Initializable{
 	/* *************** *
      *   APPUNTAMENTI  *
      * *************** */
-final static DetailedAppointmentsTable daTable = new DetailedAppointmentsTable(connectionProvider.getMySQLConnection());
+	final static DetailedAppointmentsTable daTable = new DetailedAppointmentsTable(connectionProvider.getMySQLConnection());
 	
 	@FXML
 	TableView<DetailedAppointment> appointmentsTable;
@@ -395,7 +395,7 @@ final static DetailedAppointmentsTable daTable = new DetailedAppointmentsTable(c
 	/* *************** *
      *    SCONTRINI    *
      * *************** */
-final static ReceiptsTable rTable = new ReceiptsTable(connectionProvider.getMySQLConnection());
+	final static ReceiptsTable rTable = new ReceiptsTable(connectionProvider.getMySQLConnection());
 	
 	@FXML
 	TableView<Receipt> receiptsTable;
