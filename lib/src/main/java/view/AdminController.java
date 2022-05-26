@@ -99,9 +99,6 @@ public class AdminController implements Initializable{
 		});
 		clientsTable.getItems().setAll(data);
 	}
-	public void print() {
-		System.out.println("ciao");
-	}
 
 	@FXML
 	public void createClient() throws IOException {
@@ -285,6 +282,17 @@ public class AdminController implements Initializable{
 			});
 			clientsTable.getItems().setAll(data);
 		}
+	}
+	
+	@FXML
+	public void topPremiumClients() {
+		clientsTable.refresh();
+		final ObservableList<Client> data =
+				FXCollections.observableArrayList();
+		cTable.viewTop3PremiumClients().forEach(c -> {
+			data.add(c);
+		});
+		clientsTable.getItems().setAll(data);
 	}
 	
 	/* *************** *
@@ -514,7 +522,7 @@ public class AdminController implements Initializable{
 		c_r_barber.setCellValueFactory(new PropertyValueFactory<>("idBarber"));
 		c_r_client.setCellValueFactory(new PropertyValueFactory<>("idClient"));
 		
-		//CLIENTI
+		//SERVIZI
 		viewServices();
 		ser_c_name.setCellValueFactory(new PropertyValueFactory<>("name"));
 		ser_c_description.setCellValueFactory(new PropertyValueFactory<>("description"));

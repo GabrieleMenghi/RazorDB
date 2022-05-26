@@ -230,4 +230,23 @@ public class ClientsTable {
     		throw new IllegalStateException(e);
     	}
     }
+    
+    public List<Client> viewTop3PremiumClients(){
+    	String query = "SELECT c.* FROM " + TABLE_NAME
+    					+ " c, appuntamenti app, associazioni ass"
+    					+ " WHERE c.CodCliente = app.ClientePrenotante"
+    					+ " AND app.BarbiereEffettuante = ass.BarbiereEffettuante"
+    					+ " AND app.Data = ass.DataAppuntamento"
+    					+ " AND app.Ora = ass.OraAppuntamento"
+    					+ " AND (ass.IdServizio = 'TP' or ass.IdServizio = 'BP')"
+    					+ " GROUP BY c.CodCliente, c.Nome, c.Cognome, c.Via, c.Città, c.Mail, c.NumTelefono"
+    					+ " ORDER BY count(*) desc"
+    					+ " LIMIT 3";
+    	try(Statement st = this.connection.createStatement()){
+    		ResultSet rs = st.executeQuery(query);
+    		return readClientsFromResultSet(rs);
+    	} catch (SQLException e) {
+    		throw new IllegalStateException(e);
+    	}
+    }
 }

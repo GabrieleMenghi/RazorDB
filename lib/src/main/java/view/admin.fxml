@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -32,6 +33,9 @@
                                        <font>
                                           <Font size="18.0" />
                                        </font>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
                                     </Label>
                                  </children>
                               </HBox>
@@ -42,6 +46,9 @@
                                        <font>
                                           <Font size="18.0" />
                                        </font>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
                                     </Label>
                                  </children>
                               </HBox>
@@ -54,28 +61,68 @@
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
                                           </Label>
-                                          <TextField fx:id="nameSearch" styleClass="fields" stylesheets="@style2.css" />
+                                          <TextField fx:id="nameSearch" styleClass="fields" stylesheets="@style2.css">
+                                             <VBox.margin>
+                                                <Insets left="5.0" right="10.0" />
+                                             </VBox.margin></TextField>
                                        </children>
                                     </VBox>
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                              <HBox alignment="CENTER_LEFT" prefHeight="105.0" prefWidth="200.0">
                                  <children>
-                                    <FontAwesomeIcon fill="WHITE" glyphName="TROPHY" onMouseClicked="#clientsOverAverage" size="40" />
+                                    <FontAwesomeIcon fill="WHITE" glyphName="TROPHY" onMouseClicked="#clientsOverAverage" size="36" />
                                     <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="162.0">
                                        <children>
                                           <Label onMouseClicked="#clientsOverAverage" text="Utenti con scontrino" textFill="WHITE">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
+                                             <VBox.margin>
+                                                <Insets left="5.0" />
+                                             </VBox.margin>
                                           </Label>
                                           <Label onMouseClicked="#clientsOverAverage" text="medio &gt;= a" textFill="WHITE">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
+                                             <VBox.margin>
+                                                <Insets left="5.0" />
+                                             </VBox.margin>
                                           </Label>
-                                          <TextField fx:id="faverage" styleClass="fields" stylesheets="@style2.css" />
+                                          <TextField fx:id="faverage" styleClass="fields" stylesheets="@style2.css">
+                                             <VBox.margin>
+                                                <Insets left="5.0" right="10.0" />
+                                             </VBox.margin></TextField>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="STAR" onMouseClicked="#topPremiumClients" size="40" />
+                                    <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="163.0">
+                                       <children>
+                                          <Label onMouseClicked="#topPremiumClients" text="Top 3 per servizi" textFill="WHITE">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets left="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label onMouseClicked="#topPremiumClients" text="premium richiesti" textFill="WHITE">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets left="5.0" />
+                                             </VBox.margin>
+                                          </Label>
                                        </children>
                                     </VBox>
                                  </children>
@@ -130,11 +177,17 @@
                                              <font>
                                                 <Font size="17.0" />
                                              </font>
+                                             <VBox.margin>
+                                                <Insets left="5.0" />
+                                             </VBox.margin>
                                           </Label>
                                           <Label onMouseClicked="#createAppointment" text="appuntamento" textFill="WHITE">
                                              <font>
                                                 <Font size="17.0" />
                                              </font>
+                                             <VBox.margin>
+                                                <Insets left="5.0" />
+                                             </VBox.margin>
                                           </Label>
                                        </children>
                                     </VBox>
@@ -149,8 +202,14 @@
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
+                                             <VBox.margin>
+                                                <Insets left="5.0" />
+                                             </VBox.margin>
                                           </Label>
-                                          <DatePicker fx:id="date" />
+                                          <DatePicker fx:id="date">
+                                             <VBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </VBox.margin></DatePicker>
                                        </children>
                                     </VBox>
                                  </children>
@@ -162,6 +221,9 @@
                                        <font>
                                           <Font size="18.0" />
                                        </font>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
                                     </Label>
                                  </children>
                               </HBox>
@@ -172,6 +234,9 @@
                                        <font>
                                           <Font size="18.0" />
                                        </font>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
                                     </Label>
                                  </children>
                               </HBox>
@@ -205,7 +270,7 @@
         <content>
           <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: black;">
                <children>
-                  <TableView fx:id="barbersTable" layoutX="289.0" layoutY="126.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="35.0">
+                  <TableView fx:id="barbersTable" layoutX="289.0" layoutY="126.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
                     <columns>
                       <TableColumn fx:id="c_b_id" prefWidth="75.0" text="CODICE" />
                       <TableColumn fx:id="c_b_firstname" prefWidth="92.0" text="NOME" />
@@ -255,10 +320,10 @@
                       <TableColumn fx:id="ser_c_description" prefWidth="86.0" text="DESCRIZIONE" />
                         <TableColumn fx:id="ser_c_price" prefWidth="60.0" text="PREZZO" />
                         <TableColumn fx:id="ser_c_duration" prefWidth="84.0" text="DURATA" />
-                        <TableColumn fx:id="ser_c_req1" prefWidth="77.0" text="RICHIESTE 1" />
-                        <TableColumn fx:id="ser_c_req2" prefWidth="85.0" text="RICHIESTE 2" />
-                        <TableColumn fx:id="ser_req3" prefWidth="81.0" text="RICHIESTE 3" />
-                        <TableColumn fx:id="ser_req4" prefWidth="89.0" text="RICHIESTE 4" />
+                        <TableColumn fx:id="ser_c_req1" prefWidth="77.0" text="RICHIESTE 1° TRIMESTRE" />
+                        <TableColumn fx:id="ser_c_req2" prefWidth="85.0" text="RICHIESTE 2° TRIMESTRE" />
+                        <TableColumn fx:id="ser_req3" prefWidth="81.0" text="RICHIESTE 3° TRIMESTRE" />
+                        <TableColumn fx:id="ser_req4" prefWidth="89.0" text="RICHIESTE 4° TRIMESTRE" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
