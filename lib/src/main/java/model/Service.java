@@ -55,4 +55,28 @@ public class Service {
 	public Integer getRequests4() {
 		return requests4;
 	}
+
+	@Override
+	public String toString() {
+		return "Service [name=" + name + ", description=" + description + ", price=" + price + ", duration=" + duration
+				+ ", requests1=" + requests1 + ", requests2=" + requests2 + ", requests3=" + requests3 + ", requests4="
+				+ requests4 + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Service other = (Service) obj;
+		return Objects.equals(name, other.name);
+	}
 }

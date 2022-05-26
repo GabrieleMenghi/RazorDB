@@ -14,12 +14,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import utils.Pair;
-import utils.Utils;
+import javafx.util.Pair;
 
 public class UpdateAppointmentBox {
 	
-	static Pair<Date, Time> res = null;
+	static Pair<Date, Time> res;
 	
 	public static Pair<Date, Time> display(final String title, final String oldTime) {
 		Stage window = new Stage();
@@ -59,9 +58,7 @@ public class UpdateAppointmentBox {
 			if(date.getValue() == null || ftime.getText().isEmpty() || ftime.getText().isBlank()) {
 				err.setText("Compila i campi obbligatori");
 			} else {
-				Date d = Utils.dateToSqlDate(Utils.buildDate(date.getValue().getDayOfMonth(), date.getValue().getMonthValue(), date.getValue().getYear()).get());
-				res.setA(d);
-				res.setB(Time.valueOf(ftime.getText()));
+				res = new Pair<Date, Time>(Date.valueOf(date.getValue()), Time.valueOf(ftime.getText()));
 				window.close();
 			}
 		});

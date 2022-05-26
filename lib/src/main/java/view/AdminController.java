@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
 import db.ConnectionProvider;
 import db.tables.AppointmentsTable;
 import db.tables.BarbersTable;
@@ -25,7 +24,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
@@ -34,13 +32,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 import model.Appointment;
 import model.Barber;
 import model.Client;
 import model.DetailedAppointment;
 import model.Receipt;
 import model.Service;
-import utils.Pair;
 import utils.Utils;
 
 public class AdminController implements Initializable{
@@ -369,7 +367,7 @@ public class AdminController implements Initializable{
 		DetailedAppointment old = appointmentsTable.getSelectionModel().getSelectedItem();
 		Pair<java.sql.Date, Time> res = UpdateAppointmentBox.display("Aggiorna appuntamento", old.getTime().toString());
 		if(!(res == null)) {
-			aTable.updateAppointment(old.getIdBarber(), old.getDate(), old.getTime(), res.getA(), res.getB());
+			aTable.updateAppointment(old.getIdBarber(), old.getDate(), old.getTime(), res.getKey(), res.getValue());
 		}
 	}
 	

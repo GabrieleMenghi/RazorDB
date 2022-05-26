@@ -48,7 +48,7 @@ public class DetailedAppointmentsTable {
     }
     
     public List<DetailedAppointment> findAppointmentsByDate(final Date date)	{
-    	String query = "SELECT a.Data, a.Ora, a.ClientePrenotante, c.Nome, c.Cognome FROM"
+    	String query = "SELECT a.Data, a.Ora, a.BarbiereEffettuante, a.ClientePrenotante, c.Nome, c.Cognome FROM"
 						+ " appuntamenti a, clienti c"
 						+ " WHERE a.ClientePrenotante = c.CodCliente"
 						+ " AND a.Data = ?";

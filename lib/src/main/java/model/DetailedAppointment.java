@@ -8,7 +8,7 @@ public class DetailedAppointment {
 	
 	private Date date;
 	private Time time;
-	private Integer idPerformingBarber;
+	private Integer idBarber;
 	private Integer idClient;
 	private String clientFirstName;
 	private String clientLastName;
@@ -16,7 +16,7 @@ public class DetailedAppointment {
 	public DetailedAppointment(Date date, Time time, Integer idPerformingBarber, Integer idClient, String clientFirstName, String clientLastName) {
 		this.date = Objects.requireNonNull(date);
 		this.time = Objects.requireNonNull(time);
-		this.idPerformingBarber = Objects.requireNonNull(idPerformingBarber);
+		this.idBarber = Objects.requireNonNull(idPerformingBarber);
 		this.idClient = Objects.requireNonNull(idClient);
 		this.clientFirstName = Objects.requireNonNull(clientFirstName);
 		this.clientLastName = Objects.requireNonNull(clientLastName);
@@ -31,7 +31,7 @@ public class DetailedAppointment {
 	}
 	
 	public Integer getIdBarber() {
-		return idPerformingBarber;
+		return idBarber;
 	}
 	
 	public Integer getIdClient() {
@@ -48,13 +48,14 @@ public class DetailedAppointment {
 
 	@Override
 	public String toString() {
-		return "DetailedAppointment [date=" + date + ", time=" + time + ", idClient=" + idClient + ", clientFirstName="
-				+ clientFirstName + ", clientLastName=" + clientLastName + "]";
+		return "DetailedAppointment [date=" + date + ", time=" + time + ", idPerformingBarber=" + idBarber
+				+ ", idClient=" + idClient + ", clientFirstName=" + clientFirstName + ", clientLastName="
+				+ clientLastName + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(clientFirstName, clientLastName, date, idClient, time);
+		return Objects.hash(date, idBarber, time);
 	}
 
 	@Override
@@ -66,8 +67,7 @@ public class DetailedAppointment {
 		if (getClass() != obj.getClass())
 			return false;
 		DetailedAppointment other = (DetailedAppointment) obj;
-		return Objects.equals(clientFirstName, other.clientFirstName)
-				&& Objects.equals(clientLastName, other.clientLastName) && Objects.equals(date, other.date)
-				&& Objects.equals(idClient, other.idClient) && Objects.equals(time, other.time);
+		return Objects.equals(date, other.date) && Objects.equals(idBarber, other.idBarber)
+				&& Objects.equals(time, other.time);
 	}
 }

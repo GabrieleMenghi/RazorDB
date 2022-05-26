@@ -1,10 +1,8 @@
 package model;
 
 import java.sql.Date;
-import java.sql.SQLDataException;
 import java.sql.Time;
 import java.util.Objects;
-import java.util.Optional;
 
 public class Appointment {
 	private Integer idPerformingBarber;
@@ -18,12 +16,12 @@ public class Appointment {
 	
 	public Appointment(Integer idPerformingBarber, Date date, Time time, Integer idBookingClient, Integer idPerformingClient,
 			Integer idBookingBarber, Integer receiptNumber, Date receiptDate) {
-		this.idPerformingBarber = idPerformingBarber;
-		this.date = date;
-		this.time = time;
-		this.idBookingClient = idBookingClient;
+		this.idPerformingBarber = Objects.requireNonNull(idPerformingBarber);
+		this.date = Objects.requireNonNull(date);
+		this.time = Objects.requireNonNull(time);
+		this.idBookingClient = Objects.requireNonNull(idBookingClient);
 		this.idPerformingClient = idPerformingClient;
-		this.idBookingBarber = idBookingBarber;
+		this.idBookingBarber = Objects.requireNonNull(idBookingBarber);
 		this.receiptNumber = receiptNumber;
 		this.receiptDate = receiptDate;
 	}

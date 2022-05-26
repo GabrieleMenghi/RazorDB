@@ -182,7 +182,7 @@
                     <columns>
                       <TableColumn fx:id="c_a_date" prefWidth="113.0" text="DATA" />
                       <TableColumn fx:id="c_a_time" prefWidth="105.0" text="ORA" />
-                        <TableColumn fx:id="c_a_bookingclient" prefWidth="84.0" text="ID CLIENTE" />
+                        <TableColumn fx:id="c_a_bookingclient" prefWidth="127.0" text="ID CLIENTE" />
                         <TableColumn fx:id="c_a_clientfirstname" prefWidth="114.0" text="NOME CLIENTE" />
                         <TableColumn fx:id="c_a_clientlastname" prefWidth="133.0" text="COGNOME CLIENTE" />
                     </columns>
