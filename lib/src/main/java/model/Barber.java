@@ -2,7 +2,6 @@ package model;
 
 import java.sql.Date;
 import java.util.Objects;
-import java.util.Optional;
 
 public class Barber {
 	private Integer id;
@@ -51,6 +50,27 @@ public class Barber {
 	public Long getPiva() {
 		return piva;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Barber [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", cf=" + cf
+				+ ", birthDate=" + birthDate + ", type=" + type + ", piva=" + piva + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Barber other = (Barber) obj;
+		return Objects.equals(id, other.id);
+	}
 }

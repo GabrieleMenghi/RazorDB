@@ -49,5 +49,31 @@ public class Appointment {
 	}
 	public Date getReceiptDate() {
 		return receiptDate;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "Appointment [idPerformingBarber=" + idPerformingBarber + ", date=" + date + ", time=" + time
+				+ ", idBookingClient=" + idBookingClient + ", idPerformingClient=" + idPerformingClient
+				+ ", idBookingBarber=" + idBookingBarber + ", receiptNumber=" + receiptNumber + ", receiptDate="
+				+ receiptDate + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(date, idPerformingBarber, time);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Appointment other = (Appointment) obj;
+		return Objects.equals(date, other.date) && Objects.equals(idPerformingBarber, other.idPerformingBarber)
+				&& Objects.equals(time, other.time);
+	}
 }

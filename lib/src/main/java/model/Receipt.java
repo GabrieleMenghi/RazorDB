@@ -43,5 +43,28 @@ public class Receipt {
 
 	public int getIdClient() {
 		return idClient;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "Receipt [id=" + id + ", date=" + date + ", time=" + time + ", total=" + total + ", idBarber=" + idBarber
+				+ ", idClient=" + idClient + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(date, id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Receipt other = (Receipt) obj;
+		return Objects.equals(date, other.date) && id == other.id;
+	}
 }

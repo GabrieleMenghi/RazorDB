@@ -368,6 +368,7 @@ public class AdminController implements Initializable{
 		Pair<java.sql.Date, Time> res = UpdateAppointmentBox.display("Aggiorna appuntamento", old.getTime().toString());
 		if(!(res == null)) {
 			aTable.updateAppointment(old.getIdBarber(), old.getDate(), old.getTime(), res.getKey(), res.getValue());
+			refreshAppointments();
 		}
 	}
 	
