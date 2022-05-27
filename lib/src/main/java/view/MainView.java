@@ -6,14 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-
-import java.io.FileInputStream;
 import java.net.URL;
 
 public class MainView extends Application {
-	
-	private final static String sep = System.getProperty("file.separator");
-	private final static String home = System.getProperty("user.dir");
 
 	@Override
 	public void start(Stage stage) throws Exception {

@@ -4,14 +4,10 @@ package RazorDB;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
-import java.util.Optional;
-
 import org.junit.jupiter.api.Test;
-
 import db.ConnectionProvider;
 import db.tables.AppointmentsTable;
 import db.tables.ClientAppointmentsTable;

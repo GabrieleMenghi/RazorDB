@@ -33,9 +33,6 @@ public class MainController implements Initializable{
     
     final static ConnectionProvider connectionProvider = new ConnectionProvider(username, password, dbName);
     final static ClientsTable cTable = new ClientsTable(connectionProvider.getMySQLConnection());
-    
-    private final static String sep = System.getProperty("file.separator");
-	private final static String home = System.getProperty("user.dir");
 	
 	@FXML
 	Button admin;
@@ -85,7 +82,6 @@ public class MainController implements Initializable{
 				adminLabel.setText("Password errata");
 			}
 		}
-		
 	}
 	
 	@FXML
