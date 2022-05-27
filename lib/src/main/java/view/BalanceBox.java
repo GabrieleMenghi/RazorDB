@@ -33,6 +33,7 @@ public class BalanceBox {
 		err.getStyleClass().add("error");
 		
 		TextField tf = new TextField();
+		tf.getStyleClass().add("textfieldbalance");
 		tf.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(

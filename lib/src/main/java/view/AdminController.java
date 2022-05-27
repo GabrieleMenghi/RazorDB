@@ -99,13 +99,23 @@ public class AdminController implements Initializable{
 		});
 		clientsTable.getItems().setAll(data);
 	}
+	
+	@FXML
+	public void undoClients() {
+		nameSearch.setText("");
+		faverage.setText("");
+		refreshClients();
+	}
 
 	@FXML
 	public void createClient() throws IOException {
 		Stage stage;
 		Scene scene;
 		Parent root;
-		root = FXMLLoader.load(getClass().getResource("newClient.fxml"));
+		FXMLLoader loader = new FXMLLoader();
+		URL fxmlurl = getClass().getResource("newClient.fxml");
+		loader.setLocation(fxmlurl);
+		root = loader.load();
 		stage = new Stage();
 		stage.getIcons().add(new Image("images/logoRazor.jpg"));
 		stage.setTitle("Nuovo cliente");
@@ -142,7 +152,9 @@ public class AdminController implements Initializable{
 		var sel = clientsTable.getSelectionModel().getSelectedItem();
 		try {
 			if(!sel.equals(null) && !(cTable.findFidelityById(sel.getId()) == null)) {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("updateClient.fxml"));
+				FXMLLoader loader = new FXMLLoader();
+				URL fxmlurl = getClass().getResource("updateClient.fxml");
+				loader.setLocation(fxmlurl);
 				root = (Parent) loader.load();
 				UpdateClientController controller = loader.getController();
 				controller.link(sel.getId(),
@@ -193,7 +205,9 @@ public class AdminController implements Initializable{
 		var sel = clientsTable.getSelectionModel().getSelectedItem();
 		try {
 			if(!sel.equals(null) && !(cTable.findFidelityById(sel.getId()) == null)) {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("viewDetails.fxml"));
+				FXMLLoader loader = new FXMLLoader();
+				URL fxmlurl = getClass().getResource("viewDetails.fxml");
+				loader.setLocation(fxmlurl);
 				root = (Parent) loader.load();
 				ClientDetailsController controller = loader.getController();
 				controller.link(sel.getId(),
@@ -360,7 +374,10 @@ public class AdminController implements Initializable{
 		Stage stage;
 		Scene scene;
 		Parent root;
-		root = FXMLLoader.load(getClass().getResource("newAppointment.fxml"));
+		FXMLLoader loader = new FXMLLoader();
+		URL fxmlurl = getClass().getResource("newAppointment.fxml");
+		loader.setLocation(fxmlurl);
+		root = loader.load();
 		stage = new Stage();
 		stage.getIcons().add(new Image("images/logoRazor.jpg"));
 		stage.setTitle("Nuovo appuntamento");

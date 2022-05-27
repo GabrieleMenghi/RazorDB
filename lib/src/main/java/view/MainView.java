@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.FileInputStream;
+import java.net.URL;
 
 public class MainView extends Application {
 	
@@ -16,17 +17,15 @@ public class MainView extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
+		URL fxmlResource = getClass().getResource("/view/main.fxml");
 		FXMLLoader loader = new FXMLLoader();
-		String path = home + sep + "src" + sep + "main" + sep
-				+ "resources" + sep + "view" + sep + "main.fxml";
-		try(FileInputStream fxmlStream = new FileInputStream(path)){
-			AnchorPane root = (AnchorPane) loader.load(fxmlStream);
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-			stage.setScene(scene);
-			stage.getIcons().add(new Image("images/logoRazor.jpg"));
-			stage.setResizable(false);
-		} catch (Exception e) {}
+		loader.setLocation(fxmlResource);
+		AnchorPane root = (AnchorPane) loader.load();
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+		stage.setScene(scene);
+		stage.getIcons().add(new Image("images/logoRazor.jpg"));
+		stage.setResizable(false);
         stage.setTitle("RazorDB");
         stage.show();
 	}

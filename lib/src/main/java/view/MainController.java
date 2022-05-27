@@ -33,6 +33,9 @@ public class MainController implements Initializable{
     
     final static ConnectionProvider connectionProvider = new ConnectionProvider(username, password, dbName);
     final static ClientsTable cTable = new ClientsTable(connectionProvider.getMySQLConnection());
+    
+    private final static String sep = System.getProperty("file.separator");
+	private final static String home = System.getProperty("user.dir");
 	
 	@FXML
 	Button admin;
@@ -55,8 +58,6 @@ public class MainController implements Initializable{
 	@FXML
 	Label clientLabel;
 	
-
-	
 	@FXML
 	public void adminAccess(ActionEvent event) throws IOException {
 		Stage stage;
@@ -69,8 +70,10 @@ public class MainController implements Initializable{
 			if(adminPassword.getText().equals("admin")) {
 				adminLabel.setText("");
 				Stage s2 = (Stage) admin.getScene().getWindow();
-				String path = "admin.fxml";
-				root = FXMLLoader.load(getClass().getResource(path));
+				FXMLLoader loader = new FXMLLoader();
+				URL fxmlurl = getClass().getResource("admin.fxml");
+				loader.setLocation(fxmlurl);
+				root = loader.load(); 
 				stage = new Stage();
 				scene = new Scene(root);
 				stage.setScene(scene);
@@ -96,7 +99,9 @@ public class MainController implements Initializable{
 			if(cTable.isClientPresent(code)) {
 				clientLabel.setText("");
 				Stage s2 = (Stage) cliente.getScene().getWindow();
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("cliente.fxml"));
+				FXMLLoader loader = new FXMLLoader();
+				URL fxmlurl = getClass().getResource("cliente.fxml");
+				loader.setLocation(fxmlurl);
 				root = (Parent) loader.load();
 				ClientController clientController = loader.getController();
 				clientController.setCode(code);
