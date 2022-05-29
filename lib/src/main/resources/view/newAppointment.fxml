@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.NewAppointmentController">
+<VBox prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.NewAppointmentController">
    <children>
       <HBox prefHeight="25.0" prefWidth="200.0">
          <children>
@@ -143,16 +144,61 @@
             </DatePicker>
          </children>
       </HBox>
-      <HBox prefHeight="40.0" prefWidth="200.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="200.0">
+         <children>
+            <Label text=" Servizi*" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="150.0" prefWidth="200.0" stylesheets="@style2.css">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="250.0">
+               <children>
+                  <VBox prefHeight="30.0" prefWidth="248.0">
+                     <children>
+                        <CheckBox fx:id="bp" mnemonicParsing="false" text="Barba premium" />
+                        <CheckBox fx:id="bs" mnemonicParsing="false" text="Barba standard" />
+                        <CheckBox fx:id="cl" mnemonicParsing="false" text="Colore" />
+                        <CheckBox fx:id="mb" mnemonicParsing="false" text="Modellatura barba" />
+                        <CheckBox fx:id="mv" mnemonicParsing="false" text="Maschera viso" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="250.0">
+               <children>
+                  <VBox prefHeight="30.0" prefWidth="100.0">
+                     <children>
+                        <CheckBox fx:id="pc" mnemonicParsing="false" text="Piastra capelli" />
+                        <CheckBox fx:id="rs" mnemonicParsing="false" text="Rifinitura sopracciglia" />
+                        <CheckBox fx:id="tb" mnemonicParsing="false" text="Taglio bimbo" />
+                        <CheckBox fx:id="tp" mnemonicParsing="false" text="Taglio premium" />
+                        <CheckBox fx:id="ts" mnemonicParsing="false" text="Taglio standard" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
          <children>
             <Button fx:id="save" mnemonicParsing="false" onMouseClicked="#saveAppointment" stylesheets="@style2.css" text="Salva">
                <HBox.margin>
-                  <Insets bottom="60.0" left="100.0" right="80.0" top="40.0" />
+                  <Insets left="40.0" right="40.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="close" mnemonicParsing="false" onMouseClicked="#closeStage" stylesheets="@style2.css" text="Cancella">
+            <Button fx:id="close" mnemonicParsing="false" onMouseClicked="#closeStage" stylesheets="@style2.css" text="Chiudi">
                <HBox.margin>
-                  <Insets bottom="60.0" left="80.0" right="80.0" top="40.0" />
+                  <Insets left="40.0" right="40.0" />
                </HBox.margin>
             </Button>
          </children>

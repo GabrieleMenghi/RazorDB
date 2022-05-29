@@ -53,9 +53,10 @@ public class AppointmentsTable {
     	}
     }
     
-    public boolean save(final Appointment appointment) {
+    public boolean save(final Appointment appointment, final List<String> services) {
         final String query = "INSERT INTO " + TABLE_NAME
         						+ " VALUES (?,?,?,?,?,?,?,?)";
+        final String query2 = "{call newAssociation (?,?,?,?)}";
         try (final PreparedStatement statement = this.connection.prepareStatement(query)) {
             statement.setInt(1, appointment.getIdPerformingBarber());
             statement.setDate(2, appointment.getDate());
@@ -70,12 +71,22 @@ public class AppointmentsTable {
             	statement.setDate(8, appointment.getReceiptDate());            	
             }
             statement.executeUpdate();
+            final CallableStatement statement2 = this.connection.prepareCall(query2);
+            for(String s : services) {
+            	statement2.setString(1, s);
+            	statement2.setInt(2, appointment.getIdPerformingBarber());
+            	statement2.setDate(3, appointment.getDate());
+            	statement2.setTime(4, appointment.getTime());
+            	statement2.addBatch();
+            }
+            statement2.executeBatch();
             return true;
         } catch (final SQLIntegrityConstraintViolationException e) {
             return false;
         } catch (final SQLException e) {
             throw new IllegalStateException(e);
         }
+        
     }
     
     public boolean updateAppointment(final Integer barber, final Date oldDate, final Time oldTime, final Date newDate, final Time newTime) {

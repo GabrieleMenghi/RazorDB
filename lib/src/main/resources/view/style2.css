@@ -27,3 +27,8 @@
 	-fx-text-fill: white;
 	-fx-border-color: white;
 }
+
+.check-box {
+	-fx-text-fill: white;
+	-fx-font-size: 12;
+}
