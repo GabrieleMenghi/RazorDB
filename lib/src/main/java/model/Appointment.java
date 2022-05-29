@@ -19,7 +19,7 @@ public class Appointment {
 		this.idPerformingBarber = Objects.requireNonNull(idPerformingBarber);
 		this.date = Objects.requireNonNull(date);
 		this.time = Objects.requireNonNull(time);
-		this.idBookingClient = Objects.requireNonNull(idBookingClient);
+		this.idBookingClient = idBookingClient;
 		this.idPerformingClient = idPerformingClient;
 		this.idBookingBarber = Objects.requireNonNull(idBookingBarber);
 		this.receiptNumber = receiptNumber;
