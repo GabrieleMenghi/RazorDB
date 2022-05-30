@@ -397,6 +397,12 @@ public class AdminController implements Initializable{
 		}
 	}
 	
+	@FXML
+	public void getServices() {
+		DetailedAppointment app = appointmentsTable.getSelectionModel().getSelectedItem();
+		ServicesBox.display("Servizi", aTable.getAppointmentServices(app.getIdBarber(), app.getDate(), app.getTime()));
+	}
+	
 	/* ********** *
      *  BARBIERI  *
      * ********** */

@@ -102,4 +102,29 @@ public class AppointmentsTable {
     		return false;
     	}		
     }
+    
+    public List<String> getAppointmentServices(final Integer barber, final Date date, final Time time) {
+    	List<String> services = new ArrayList<>();
+    	String query = "SELECT s.Descrizione"
+    					+ " FROM appuntamenti app, associazioni ass, servizi s"
+    					+ " WHERE app.BarbiereEffettuante = ass.BarbiereEffettuante"
+    					+ " AND app.Data = ass.DataAppuntamento"
+    					+ " AND app.Ora = ass.OraAppuntamento"
+    					+ " AND ass.IdServizio = s.Denominazione"
+    					+ " AND app.BarbiereEffettuante = ?"
+    					+ " AND app.Data = ?"
+    					+ " AND app.Ora = ?";
+    	try(final PreparedStatement statement = this.connection.prepareStatement(query)){
+    		statement.setInt(1, barber);
+    		statement.setDate(2, date);
+    		statement.setTime(3, time);
+    		final ResultSet rs = statement.executeQuery();  
+    		while(rs.next()) {
+				 services.add(rs.getString(1));
+			}
+    	} catch (final SQLException e) {
+    		throw new IllegalStateException();
+    	}
+    	return services;
+    }
 }
