@@ -80,6 +80,7 @@ public class AppointmentsTable {
             	statement2.addBatch();
             }
             statement2.executeBatch();
+            statement2.close();
             return true;
         } catch (final SQLIntegrityConstraintViolationException e) {
             return false;

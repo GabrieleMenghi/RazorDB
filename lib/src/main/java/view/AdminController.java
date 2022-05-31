@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import db.ConnectionProvider;
@@ -273,9 +274,9 @@ public class AdminController implements Initializable{
 	
 	@FXML
 	public void newAppointment() {
-		Appointment res = AppointmentBox.display("Nuovo appuntamento");
+		Pair<Appointment, List<String>> res = AppointmentBox.display("Nuovo appuntamento");
 		if(!(res == null)) {
-			cTable.addAppointmentById(clientsTable.getSelectionModel().getSelectedItem().getId(), res);
+			cTable.addAppointmentById(clientsTable.getSelectionModel().getSelectedItem().getId(), res.getKey(), res.getValue());
 		}
 	}
 	

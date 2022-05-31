@@ -195,10 +195,11 @@ public class ClientsTable {
         }
     }
     
-    public boolean addAppointmentById(final Integer id, final Appointment appointment) {
+    public boolean addAppointmentById(final Integer id, final Appointment appointment, final List<String> services) {
     	final String query = "INSERT INTO appuntamenti"
     							+ " (BarbiereEffettuante, Data, Ora, ClientePrenotante, ClienteEffettuante, BarbierePrenotante, NumScontrino, DataScontrino)"
     							+ " VALUES (?,?,?,?,?,?,?,?)";
+    	final String query2 = "{call newAssociation (?,?,?,?)}";
         try (final PreparedStatement statement = this.connection.prepareStatement(query)) {
             statement.setInt(1, appointment.getIdPerformingBarber());
             statement.setDate(2, appointment.getDate());
@@ -209,6 +210,16 @@ public class ClientsTable {
             statement.setObject(7, appointment.getReceiptNumber(), Types.INTEGER);
             statement.setObject(8, appointment.getReceiptDate(), Types.DATE);
             statement.executeUpdate();
+            final CallableStatement statement2 = this.connection.prepareCall(query2);
+            for(String s : services) {
+            	statement2.setString(1, s);
+            	statement2.setInt(2, appointment.getIdPerformingBarber());
+            	statement2.setDate(3, appointment.getDate());
+            	statement2.setTime(4, appointment.getTime());
+            	statement2.addBatch();
+            }
+            statement2.executeBatch();
+            statement2.close();
             return true;
         } catch (final SQLIntegrityConstraintViolationException e) {
             return false;
