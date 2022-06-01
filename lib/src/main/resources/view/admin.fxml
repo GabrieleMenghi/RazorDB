@@ -88,7 +88,11 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="105.0" prefWidth="200.0">
                                  <children>
-                                    <FontAwesomeIcon fill="WHITE" glyphName="TROPHY" onMouseClicked="#clientsOverAverage" size="36" />
+                                    <Label onMouseClicked="#clientsOverAverage" prefHeight="53.0" prefWidth="57.0" text="🏆" textFill="WHITE">
+                                       <font>
+                                          <Font size="35.0" />
+                                       </font>
+                                    </Label>
                                     <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="162.0">
                                        <children>
                                           <Label onMouseClicked="#clientsOverAverage" text="Utenti con scontrino" textFill="WHITE">
@@ -117,7 +121,14 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <FontAwesomeIcon fill="WHITE" glyphName="STAR" onMouseClicked="#topPremiumClients" size="40" />
+                                    <Label alignment="CENTER" onMouseClicked="#topPremiumClients" prefHeight="58.0" prefWidth="70.0" text="🥉" textFill="WHITE">
+                                       <font>
+                                          <Font size="38.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets top="10.0" />
+                                       </HBox.margin>
+                                    </Label>
                                     <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="163.0">
                                        <children>
                                           <Label onMouseClicked="#topPremiumClients" text="Top 3 per servizi" textFill="WHITE">
@@ -183,7 +194,7 @@
                            <children>
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <FontAwesomeIcon fill="WHITE" glyphName="PLUS" onMouseClicked="#createAppointment" size="40" />
+                                    <FontAwesomeIcon fill="WHITE" glyphName="SCISSORS" onMouseClicked="#createAppointment" size="40" />
                                     <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="146.0">
                                        <children>
                                           <Label onMouseClicked="#createAppointment" prefWidth="118.0" text="Nuovo" textFill="WHITE">

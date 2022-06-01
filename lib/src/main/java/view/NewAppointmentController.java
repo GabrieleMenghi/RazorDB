@@ -37,10 +37,7 @@ public class NewAppointmentController {
 	TextField fperformingClient;
 	@FXML
 	TextField fbookingBarber;
-	@FXML
-	TextField freceiptNumber;
-	@FXML
-	DatePicker preceiptDate;
+
 	@FXML
 	Button save;
 	@FXML
@@ -73,7 +70,6 @@ public class NewAppointmentController {
 	@FXML
 	public void saveAppointment() {
 		boolean err1 = false;
-		boolean err2 = false;
 		List<String> services = new ArrayList<>();
 		try {
 			pdate.getValue().equals(null);
@@ -121,36 +117,17 @@ public class NewAppointmentController {
 				services.add("TS");
 			}
 			
-			try {
-				preceiptDate.getValue().equals(null);
-			} catch (NullPointerException e) {
-				err2 = true;
-			}
-			if(err2) {
-				a = new Appointment(getInteger(fperformingBarber.getText()), 
-						Utils.dateToSqlDate(d),
-						Time.valueOf(ftime.getText()), 
-						getInteger(fbookingClient.getText()), 
-						getInteger(fperformingClient.getText()),
-						getInteger(fbookingBarber.getText()),
-						getInteger(freceiptNumber.getText()),
-						null);
-						aTable.save(a, services);
-			} else {
-				Date d1 = Utils.buildDate(preceiptDate.getValue().getDayOfMonth(), preceiptDate.getValue().getMonthValue(), preceiptDate.getValue().getYear()).get();
-				a = new Appointment(getInteger(fperformingBarber.getText()), 
-						Utils.dateToSqlDate(d), 
-						Time.valueOf(ftime.getText()), 
-						getInteger(fbookingClient.getText()), 
-						getInteger(fperformingClient.getText()),
-						getInteger(fbookingBarber.getText()),
-						getInteger(freceiptNumber.getText()),
-						Utils.dateToSqlDate(d1));
-						aTable.save(a, services);
-			}
+			a = new Appointment(getInteger(fperformingBarber.getText()), 
+								Utils.dateToSqlDate(d),
+								Time.valueOf(ftime.getText()), 
+								getInteger(fbookingClient.getText()), 
+								getInteger(fperformingClient.getText()),
+								getInteger(fbookingBarber.getText()),
+								null,
+								null);
+			aTable.save(a, services);
 			s2.close();
 		}
-		
 	}
 	
 	@FXML

@@ -121,7 +121,7 @@ public class AppointmentsTable {
     		statement.setTime(3, time);
     		final ResultSet rs = statement.executeQuery();  
     		while(rs.next()) {
-				 services.add(rs.getString(1));
+				 services.add(" " + rs.getString(1));
 			}
     	} catch (final SQLException e) {
     		throw new IllegalStateException();

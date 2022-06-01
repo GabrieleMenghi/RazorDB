@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.NewAppointmentController">
+<VBox prefHeight="550.0" prefWidth="500.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.NewAppointmentController">
    <children>
       <HBox prefHeight="25.0" prefWidth="200.0">
          <children>
@@ -111,37 +111,6 @@
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin></TextField>
-         </children>
-      </HBox>
-      <HBox prefHeight="40.0" prefWidth="200.0">
-         <children>
-            <Label prefWidth="300.0" text=" Numero scontrino" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman" size="20.0" />
-               </font>
-            </Label>
-            <TextField fx:id="freceiptNumber" prefHeight="40.0" prefWidth="398.0" styleClass="text" stylesheets="@style2.css">
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </TextField>
-         </children>
-      </HBox>
-      <HBox prefHeight="40.0" prefWidth="200.0">
-         <children>
-            <Label prefWidth="300.0" text=" Data scontrino" textFill="WHITE">
-               <font>
-                  <Font name="Times New Roman" size="20.0" />
-               </font>
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin>
-            </Label>
-            <DatePicker fx:id="preceiptDate" prefHeight="26.0" prefWidth="398.0">
-               <HBox.margin>
-                  <Insets right="20.0" top="5.0" />
-               </HBox.margin>
-            </DatePicker>
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="200.0">
